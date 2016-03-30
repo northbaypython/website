@@ -9,13 +9,13 @@ BASE_DIR = PACKAGE_ROOT
 DEBUG = bool(int(os.environ.get("DEBUG", "1")))
 
 DATABASES = {
-    "default": dj_database_url.config(default="postgres://localhost/pinaxcon")
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(PROJECT_ROOT, "dev.db"),
+    }
 }
 
-ALLOWED_HOSTS = [
-    os.environ.get("GONDOR_INSTANCE_DOMAIN"),
-    "conference.pinaxproject.com"
-]
+ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -152,6 +152,12 @@ INSTALLED_APPS = [
     "symposion.speakers",
     "symposion.sponsorship",
     "symposion.teams",
+
+    # Registrasion
+    "registrasion",
+
+    #admin - required by registrasion ??
+    #'nested_admin',
 
     # project
     "pinaxcon",
