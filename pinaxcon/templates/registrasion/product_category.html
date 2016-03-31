@@ -1,0 +1,42 @@
+{% extends "registrasion/base.html" %}
+{% load bootstrap %}
+{% block body %}
+
+  <h1>Product Category: {{ category.name }}</h1>
+
+  <form method="post" action="">
+    {% csrf_token %}
+
+    <table>
+        {{ voucher_form | bootstrap }}
+    </table>
+
+    <div class="form-actions">
+        <input class="btn btn-primary" type="submit" value="Add voucher" />
+    </div>
+
+    {% if discounts %}
+      <h3>Available Discounts</h3>
+      <ul>
+        {% for discount in discounts %}
+          <li>{{ discount.quantity }} x
+            {{ discount.clause }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <h3>Available Products</h3>
+    <p>{{ category.description }}</p>
+    <table>
+        {{ form | bootstrap }}
+    </table>
+
+    <div class="form-actions">
+        <input class="btn btn-primary" type="submit" value="Add to cart" />
+    </div>
+
+  </form>
+
+
+{% endblock %}
