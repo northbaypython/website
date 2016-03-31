@@ -102,10 +102,14 @@
                         <i class="fa fa-plus-sign"></i> Register for the conference
                     </a>
                 {% else %}
+                  <a href="{% url "attendee_edit" %}" class="btn btn-xs btn-default">
+                      <i class="fa fa-pencil"></i> Edit your attendee profile
+                  </a>
+
                   {% items_pending as pending %}
                   {% if pending %}
                     <a href="{% url "checkout" %}" class="btn btn-xs btn-default">
-                        <i class="fa fa-credit-cart"></i> Pay your registration
+                        <i class="fa fa-credit-card"></i> Pay your registration
                     </a>
                   {% endif %}
                 {% endif %}
@@ -127,10 +131,8 @@
                     <h5>Items pending payment</h5>
                     <ul>
                       {% for item in pending %}
-                      <li>{{ item.quantity }} x {{ item.product.category }} -
-                        {{ item.product }}</li>
+                      <li>{{ item.quantity }} &times; {{ item.product }}</li>
                       {% endfor %}
-                      <li><a href="{% url "checkout" %}">Check out and view invoice</a></li>
                     </ul>
                   {% endif %}
                 {% items_purchased as purchased %}
