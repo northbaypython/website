@@ -157,7 +157,7 @@ INSTALLED_APPS = [
     "registrasion",
 
     #admin - required by registrasion ??
-    #'nested_admin',
+    'nested_admin',
 
     # project
     "pinaxcon",
