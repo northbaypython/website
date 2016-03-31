@@ -19,9 +19,7 @@
       <h3>Available Discounts</h3>
       <ul>
         {% for discount in discounts %}
-          <li>{{ discount.quantity }} x
-            {{ discount.clause }}
-          </li>
+          <li>{{ discount.quantity }} x {{ discount.clause }}</li>
         {% endfor %}
       </ul>
     {% endif %}
