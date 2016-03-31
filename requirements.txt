@@ -10,4 +10,4 @@ pinax-boxes==2.1.2
 
 # run off of master for now
 git+https://github.com/pinax/symposion.git
-git+https://github.com/chrisjrn/registrasion.git@setuptools
+git+https://github.com/chrisjrn/registrasion.git@demo_site_integration
