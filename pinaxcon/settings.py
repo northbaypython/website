@@ -157,11 +157,12 @@ INSTALLED_APPS = [
     "registrasion",
 
     #admin - required by registrasion ??
-    'nested_admin',
+    "nested_admin",
 
     # project
     "pinaxcon",
-    "pinaxcon.proposals"
+    "pinaxcon.proposals",
+    "pinaxcon.registrasion",
 ]
 
 # A sample logging configuration. The only tangible logging
@@ -218,3 +219,5 @@ PROPOSAL_FORMS = {
 }
 PINAX_PAGES_HOOKSET = "pinaxcon.hooks.PinaxPagesHookSet"
 PINAX_BOXES_HOOKSET = "pinaxcon.hooks.PinaxBoxesHookSet"
+
+ATTENDEE_PROFILE_FORM = "pinaxcon.registrasion.forms.ProfileForm"
