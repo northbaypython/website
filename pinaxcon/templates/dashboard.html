@@ -129,21 +129,12 @@
                   {% items_pending as pending %}
                   {% if pending %}
                     <h5>Items pending payment</h5>
-                    <ul>
-                      {% for item in pending %}
-                      <li>{{ item.quantity }} &times; {{ item.product }}</li>
-                      {% endfor %}
-                    </ul>
+                    {% include "registrasion/items_list.html" with items=pending %}
                   {% endif %}
                 {% items_purchased as purchased %}
                 {% if purchased %}
                   <h5>Paid items</h5>
-                  <ul>
-                    {% for item in purchased %}
-                    <li>{{ item.quantity }} x {{ item.product.category }} -
-                      {{ item.product }}</li>
-                    {% endfor %}
-                  </ul>
+                  {% include "registrasion/items_list.html" with items=purchased %}
                 {% endif %}
                 <h5>Add/Update items</h5>
                 {% available_categories as categories %}

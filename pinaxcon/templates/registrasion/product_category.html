@@ -17,11 +17,7 @@
 
     {% if discounts %}
       <h3>Available Discounts</h3>
-      <ul>
-        {% for discount in discounts %}
-          <li>{{ discount.quantity }} &times; {{ discount.clause }}</li>
-        {% endfor %}
-      </ul>
+      {% include "registrasion/discount_list.html" with discounts=discounts %}
     {% endif %}
 
     <h3>Available Products</h3>
