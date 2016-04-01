@@ -2,7 +2,13 @@ from django.db import models
 from registrasion import models as rego
 
 class AttendeeProfile(rego.AttendeeProfileBase):
-    
+
+    @classmethod
+    def name_field(cls):
+        ''' This is used to pre-fill the attendee's name from the
+        speaker profile. If it's None, that functionality is disabled. '''
+        return "name"
+
     def save(self):
         if not self.name_per_invoice:
             self.name_per_invoice = self.name
