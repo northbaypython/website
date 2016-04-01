@@ -1,38 +1,89 @@
 {% extends "site_base.html" %}
 {% load bootstrap %}
+{% load registrasion_tags %}
 {% block body %}
 
-<h1>Invoice {{ invoice.id }}</h1>
 
-<ul>
-  <li>Void: {{ invoice.void }}</li>
-  <li>Paid: {{ invoice.paid }}</li>
-</ul>
+{% if not invoice.void and not invoice.paid %}
+  <p><strong>NOTICE:</strong> This the below invoice is automatically generated, and will be voided
+    if you amend your registration before payment, or if discounts or products contained in the
+    invoice become unavailable. The items and discounts are only reserved until
+    the invoice due time.</p>
 
-<table>
+  <p>Your most recent invoice will be available at (PUBLIC PAYMENT URL). You can give this URL to
+    your accounts department to pay your registration.</p>
+
+  <div>
+    <a class="btn btn-default" href="{% url "pay_invoice" invoice.id %}">Pay this invoice</a>
+    {% if user.is_staff %}
+      <a class="btn btn-default" href="{% url "dashboard" %}">Apply manual payment</a>
+    {% endif %}
+  </div>
+{% elif invoice.paid %}
+  {% if user.is_staff %}
+  <div>
+    {% if user.is_staff %}
+      <a class="btn btn-default" href="{% url "dashboard" %}">Apply manual refund</a>
+    {% endif %}
+  </div>
+  {% endif %}
+{% endif %}
+
+<hr />
+
+<h2>Invoice</h2>
+
+{% with invoice_user=invoice.cart.user %}
+  <ul>
+    <li><strong>Invoice number:</strong> {{ invoice.id }}
+    <li><strong>Invoice status:
+    {% if invoice.paid %}
+      PAID
+    {% elif invoice.void %}
+      VOID
+    {% else %}
+      UNPAID
+    {% endif %}</strong></li>
+    <li><strong>Issue date:</strong> {{ invoice.cart.time_last_updated|date:"DATE_FORMAT" }}
+    {% if not invoice.void %}
+      <li><strong>Due:</strong> {{ invoice.cart.time_last_updated|add:invoice.cart.reservation_duration|date:"DATETIME_FORMAT"}}</li>
+    {% endif %}
+    <li><strong>Attention:</strong> {{ invoice_user.attendee.badgeandprofile.name_per_invoice }}</li>
+    {% if invoice_user.attendee.badgeandprofile.company.strip  %}
+      <li><strong>Company:</strong> {{ invoice_user.attendee.badgeandprofile.company }}</li>
+    {% endif %}
+  </ul>
+{% endwith %}
+
+<p>This invoice has been issued as a result of an application to attend (conference name).</p>
+
+
+<table class="table table-striped">
   <tr>
     <th>Description</th>
-    <th>Quantity</th>
-    <th>Price/Unit</th>
-    <th>Total</th>
+    <th class="text-right">Quantity</th>
+    <th class="text-right">Price/Unit</th>
+    <th class="text-right">Total</th>
   </tr>
   {% for line_item in invoice.lineitem_set.all %}
     <tr>
-      <td>{{line_item.description}}</td>
-      <td>{{line_item.quantity}}</td>
-      <td>{{line_item.price}}</td>
-      <td><!-- multiply --> FIXME</td>
+      <td>{{ line_item.description }}</td>
+      <td class="text-right">{{ line_item.quantity }}</td>
+      <td class="text-right">${{ line_item.price }}</td>
+      <td class="text-right">${{ line_item.price|multiply:line_item.quantity }}</td>
     </tr>
   {% endfor %}
   <tr>
     <th>TOTAL</th>
     <td></td>
     <td></td>
-    <td>{{ invoice.value }}</td>
+    <td class="text-right">${{ invoice.value }}</td>
   </tr>
 </table>
 
-<table>
+{% if invoice.payment_set.all %}
+<h4>Payments received</h4>
+<table class="table table-striped">
   <tr>
     <th>Payment time</th>
     <th>Reference</th>
@@ -46,5 +97,6 @@
     </tr>
   {% endfor %}
 </table>
+{% endif %}
 
 {% endblock %}
