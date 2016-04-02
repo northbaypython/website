@@ -12,7 +12,7 @@ class AttendeeProfile(rego.AttendeeProfileBase):
     def save(self):
         if not self.name_per_invoice:
             self.name_per_invoice = self.name
-        super(BadgeAndProfile, self).save()
+        super(AttendeeProfile, self).save()
 
     # Things that appear on badge
     name = models.CharField(

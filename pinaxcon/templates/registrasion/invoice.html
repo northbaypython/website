@@ -48,9 +48,9 @@
     {% if not invoice.void %}
       <li><strong>Due:</strong> {{ invoice.cart.time_last_updated|add:invoice.cart.reservation_duration|date:"DATETIME_FORMAT"}}</li>
     {% endif %}
-    <li><strong>Attention:</strong> {{ invoice_user.attendee.badgeandprofile.name_per_invoice }}</li>
-    {% if invoice_user.attendee.badgeandprofile.company.strip  %}
-      <li><strong>Company:</strong> {{ invoice_user.attendee.badgeandprofile.company }}</li>
+    <li><strong>Attention:</strong> {{ invoice_user.attendee.attendeeprofilebase.attendeeprofile.name_per_invoice }}</li>
+    {% if invoice_user.attendee.attendeeprofilebase.attendeeprofile.company.strip  %}
+      <li><strong>Company:</strong> {{ invoice_user.attendee.attendeeprofilebase.attendeeprofile.company }}</li>
     {% endif %}
   </ul>
 {% endwith %}
