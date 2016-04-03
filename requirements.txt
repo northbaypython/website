@@ -14,4 +14,3 @@ git+https://github.com/chrisjrn/registrasion.git@demo_site_integration
 
 # Heroku
 django-toolbelt
-
