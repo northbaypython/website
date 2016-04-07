@@ -16,14 +16,14 @@
   <div>
     <a class="btn btn-default" href="{% url "demopay" invoice.id %}">Pay this invoice</a>
     {% if user.is_staff %}
-      <a class="btn btn-default" href="{% url "dashboard" %}">Apply manual payment</a>
+      <a class="btn btn-default" href="{% url "manual_payment" invoice.id %}">Apply manual payment</a>
     {% endif %}
   </div>
 {% elif invoice.is_paid %}
   {% if user.is_staff %}
   <div>
     {% if user.is_staff %}
-      <a class="btn btn-default" href="{% url "dashboard" %}">Apply manual refund</a>
+      <a class="btn btn-default" href="{% url "manual_payment" invoice.id %}">Apply manual payment/refund</a>
     {% endif %}
   </div>
   {% endif %}
@@ -73,20 +73,7 @@
 
 {% if invoice.paymentbase_set.all %}
 <h4>Payments received</h4>
-<table class="table table-striped">
-  <tr>
-    <th>Payment time</th>
-    <th>Reference</th>
-    <th>Amount</th>
-  </tr>
-  {% for payment in invoice.paymentbase_set.all %}
-    <tr>
-      <td>{{payment.time}}</td>
-      <td>{{payment.reference}}</td>
-      <td>{{payment.amount}}</td>
-    </tr>
-  {% endfor %}
-</table>
+{% include "registrasion/payment_list.html" with payments=invoice.paymentbase_set.all %}
 {% endif %}
 
 {% endblock %}
