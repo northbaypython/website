@@ -9,6 +9,13 @@ class AttendeeProfile(rego.AttendeeProfileBase):
         speaker profile. If it's None, that functionality is disabled. '''
         return "name"
 
+    def invoice_recipient(self):
+        if self.company:
+            base = "%(name_per_invoice)s c/- %(company)s"
+        else:
+            base = "%(name_per_invoice)"
+        return base % self.__dict__
+
     def save(self):
         if not self.name_per_invoice:
             self.name_per_invoice = self.name
@@ -67,3 +74,9 @@ class AttendeeProfile(rego.AttendeeProfileBase):
         max_length=64,
         blank=True,
     )
+
+
+class DemoPayment(rego.PaymentBase):
+    ''' A subclass of PaymentBase for use in our demo payments function. '''
+
+    pass  # No custom features here, but yours could be here. 

@@ -4,7 +4,7 @@
 {% block body %}
 
 
-{% if not invoice.void and not invoice.paid %}
+{% if invoice.is_unpaid %}
   <p><strong>NOTICE:</strong> This the below invoice is automatically generated, and will be voided
     if you amend your registration before payment, or if discounts or products contained in the
     invoice become unavailable. The items and discounts are only reserved until
@@ -14,12 +14,12 @@
     your accounts department to pay your registration.</p>
 
   <div>
-    <a class="btn btn-default" href="{% url "pay_invoice" invoice.id %}">Pay this invoice</a>
+    <a class="btn btn-default" href="{% url "demopay" invoice.id %}">Pay this invoice</a>
     {% if user.is_staff %}
       <a class="btn btn-default" href="{% url "dashboard" %}">Apply manual payment</a>
     {% endif %}
   </div>
-{% elif invoice.paid %}
+{% elif invoice.is_paid %}
   {% if user.is_staff %}
   <div>
     {% if user.is_staff %}
@@ -36,22 +36,12 @@
 {% with invoice_user=invoice.cart.user %}
   <ul>
     <li><strong>Invoice number:</strong> {{ invoice.id }}
-    <li><strong>Invoice status:
-    {% if invoice.paid %}
-      PAID
-    {% elif invoice.void %}
-      VOID
-    {% else %}
-      UNPAID
-    {% endif %}</strong></li>
-    <li><strong>Issue date:</strong> {{ invoice.cart.time_last_updated|date:"DATE_FORMAT" }}
-    {% if not invoice.void %}
-      <li><strong>Due:</strong> {{ invoice.cart.time_last_updated|add:invoice.cart.reservation_duration|date:"DATETIME_FORMAT"}}</li>
+    <li><strong>Invoice status:</strong> {{ invoice.get_status_display }}</li>
+    <li><strong>Issue date:</strong> {{ invoice.issue_time|date:"DATE_FORMAT" }}
+    {% if not invoice.is_void %}
+      <li><strong>Due:</strong> {{ invoice.due_time|date:"DATETIME_FORMAT"}}</li>
     {% endif %}
-    <li><strong>Attention:</strong> {{ invoice_user.attendee.attendeeprofilebase.attendeeprofile.name_per_invoice }}</li>
-    {% if invoice_user.attendee.attendeeprofilebase.attendeeprofile.company.strip  %}
-      <li><strong>Company:</strong> {{ invoice_user.attendee.attendeeprofilebase.attendeeprofile.company }}</li>
-    {% endif %}
+    <li><strong>Attention:</strong> {{ invoice_user.attendee.attendeeprofilebase.invoice_recipient }}</li>
   </ul>
 {% endwith %}
 
@@ -81,7 +71,7 @@
   </tr>
 </table>
 
-{% if invoice.payment_set.all %}
+{% if invoice.paymentbase_set.all %}
 <h4>Payments received</h4>
 <table class="table table-striped">
   <tr>
@@ -89,7 +79,7 @@
     <th>Reference</th>
     <th>Amount</th>
   </tr>
-  {% for payment in invoice.payment_set.all %}
+  {% for payment in invoice.paymentbase_set.all %}
     <tr>
       <td>{{payment.time}}</td>
       <td>{{payment.reference}}</td>
