@@ -14,17 +14,18 @@ from registrasion.controllers.invoice import InvoiceController
 import models
 
 
-@login_required
-def demopay(request, invoice_id):
+def demopay(request, invoice_id, access_code):
     ''' Marks the invoice with the given invoice id as paid.
-    WORK IN PROGRESS FUNCTION. Must be replaced with real payment workflow.
-
     '''
     invoice_id = int(invoice_id)
     inv = get_object_or_404(rego.Invoice.objects,pk=invoice_id)
+
     invoice = InvoiceController(inv)
 
-    to_invoice = redirect("invoice", invoice.invoice.id)
+    if not invoice.can_view(user=request.user, access_code=access_code):
+        raise Http404()
+
+    to_invoice = redirect("invoice", invoice.invoice.id, access_code)
 
     try:
         invoice.validate_allowed_to_pay()  # Verify that we're allowed to do this.
@@ -41,6 +42,6 @@ def demopay(request, invoice_id):
 
     invoice.update_status()
 
-    messages.success("This invoice was successfully paid.")
+    messages.success(request, "This invoice was successfully paid.")
 
     return to_invoice

@@ -5,16 +5,18 @@
 
 
 {% if invoice.is_unpaid %}
-  <p><strong>NOTICE:</strong> This the below invoice is automatically generated, and will be voided
+  <p><strong>NOTICE:</strong> The below invoice is automatically generated, and will be voided
     if you amend your registration before payment, or if discounts or products contained in the
     invoice become unavailable. The items and discounts are only reserved until
     the invoice due time.</p>
 
-  <p>Your most recent invoice will be available at (PUBLIC PAYMENT URL). You can give this URL to
-    your accounts department to pay your registration.</p>
+  {% url "invoice_access" invoice.user.attendee.access_code as access_url %}
+  <p>Your most recent unpaid invoice will be available at
+    <a href="{{ access_url }}">{{ request.scheme }}://{{ request.get_host }}{{ access_url }}</a>
+    You can give this URL to your accounts department to pay your registration.</p>
 
   <div>
-    <a class="btn btn-default" href="{% url "demopay" invoice.id %}">Pay this invoice</a>
+    <a class="btn btn-default" href="{% url "demopay" invoice.id invoice.user.attendee.access_code %}">Pay this invoice</a>
     {% if user.is_staff %}
       <a class="btn btn-default" href="{% url "manual_payment" invoice.id %}">Apply manual payment</a>
     {% endif %}
