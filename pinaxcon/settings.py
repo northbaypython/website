@@ -163,6 +163,9 @@ INSTALLED_APPS = [
     "pinaxcon",
     "pinaxcon.proposals",
     "pinaxcon.registrasion",
+
+    # Django Debug Toolbar \o/
+    "debug_toolbar",
 ]
 
 # A sample logging configuration. The only tangible logging
