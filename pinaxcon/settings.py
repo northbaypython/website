@@ -6,7 +6,8 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = PACKAGE_ROOT
 
-DEBUG = bool(int(os.environ.get("DEBUG", "1")))
+#DEBUG = bool(int(os.environ.get("DEBUG", "1")))
+DEBUG = True
 
 import dj_database_url
 DATABASES = {
