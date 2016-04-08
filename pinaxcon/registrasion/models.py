@@ -13,7 +13,7 @@ class AttendeeProfile(rego.AttendeeProfileBase):
         if self.company:
             base = "%(name_per_invoice)s c/- %(company)s"
         else:
-            base = "%(name_per_invoice)"
+            base = "%(name_per_invoice)s"
         return base % self.__dict__
 
     def save(self):
@@ -79,4 +79,4 @@ class AttendeeProfile(rego.AttendeeProfileBase):
 class DemoPayment(rego.PaymentBase):
     ''' A subclass of PaymentBase for use in our demo payments function. '''
 
-    pass  # No custom features here, but yours could be here. 
+    pass  # No custom features here, but yours could be here.
