@@ -148,16 +148,12 @@
               <h5>Invoices</h5>
                 <ul>
                   {% for invoice in invoices %}
-                    <li>
-                        <a href="{% url "invoice" invoice.id %}">Invoice {{ invoice.id }}</a>
-                        - ${{ invoice.value }}
-                        {% if invoice.paid %}
-                          (PAID)
-                        {% endif %}
-                        {% if invoice.void %}
-                          (VOID)
-                        {% endif %}
-                    </li>
+                    {% if not invoice.is_void %}
+                      <li>
+                          <a href="{% url "invoice" invoice.id %}">Invoice {{ invoice.id }}</a>
+                          - ${{ invoice.value }} ({{ invoice.get_status_display }})
+                      </li>
+                    {% endif %}
                   {% endfor %}
                 </ul>
               {% endif %}

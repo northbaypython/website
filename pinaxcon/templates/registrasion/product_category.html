@@ -1,5 +1,6 @@
 {% extends "registrasion/base.html" %}
 {% load bootstrap %}
+{% load registrasion_tags %}
 {% block body %}
 
   <h1>Product Category: {{ category.name }}</h1>
@@ -14,6 +15,14 @@
     <div class="form-actions">
         <input class="btn btn-primary" type="submit" value="Add voucher" />
     </div>
+
+    {% items_purchased category as items %}
+    {% if items %}
+      <h3>Paid items</h3>
+      <p>You have already paid for the following items:</p>
+      {% include "registrasion/items_list.html" with items=items %}
+    {% endif %}
+
 
     {% if discounts %}
       <h3>Available Discounts</h3>
