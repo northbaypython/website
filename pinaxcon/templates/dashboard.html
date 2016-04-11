@@ -157,6 +157,12 @@
                   {% endfor %}
                 </ul>
               {% endif %}
+
+              {% available_credit as credit %}
+              {% if credit %}
+                <p>You have ${{ credit }} leftover from refunded invoices. Contact the conference organisers
+                  to put this toward other purchases, or to refund it.</p>
+              {% endif %}
             {% endif %}
           </div>
     </div>
