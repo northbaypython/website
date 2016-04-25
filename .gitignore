@@ -1,4 +1,5 @@
 *.pyc
+.coverage
 node_modules/
 _build/
 .DS_Store
