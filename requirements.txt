@@ -14,4 +14,4 @@ coverage==4.0.3
 
 # Registrasion
 registrasion==0.1.0
-https://github.com/pinax/symposion/tarball/ad81810#egg=symposion
+https://github.com/pinax/symposion/tarball/ce27b4c#egg=symposion
