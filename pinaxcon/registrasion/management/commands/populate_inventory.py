@@ -1,10 +1,13 @@
 from collections import namedtuple
+from datetime import datetime
 from datetime import timedelta
 from decimal import Decimal
+from django.contrib.auth.models import Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
 
 from registrasion.models import inventory as inv
+from registrasion.models import conditions as cond
 
 class Command(BaseCommand):
     help = 'Populates the inventory with the LCA2017 inventory model'
@@ -13,8 +16,27 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
+        self.populate_groups()
         self.populate_inventory()
+        self.populate_restrictions()
         self.populate_discounts()
+
+    def populate_groups(self):
+        self.group_team = self.find_or_make(
+            Group,
+            ("name", ),
+            name="Conference organisers",
+        )
+        self.group_volunteers = self.find_or_make(
+            Group,
+            ("name", ),
+            name="Conference volunteers",
+        )
+        self.group_unpublish = self.find_or_make(
+            Group,
+            ("name", ),
+            name="Can see unpublished products",
+        )
 
     def populate_inventory(self):
         # Categories
@@ -364,12 +386,139 @@ class Command(BaseCommand):
                     order=order,
                 )
 
-    def populate_discounts(self):
+    def populate_restrictions(self):
         pass
+
+    def populate_discounts(self):
+
+        def add_early_birds(self, discount):
+            self.find_or_make(
+                cond.DiscountForProduct,
+                ("discount", "product"),
+                discount=discount,
+                product=self.ticket_fairy,
+                price=Decimal("200.00"),
+                quantity=1,  # Per user
+            )
+            self.find_or_make(
+                cond.DiscountForProduct,
+                ("discount", "product"),
+                discount=discount,
+                product=self.ticket_professional,
+                price=Decimal("200.00"),
+                quantity=1,  # Per user
+            )
+            self.find_or_make(
+                cond.DiscountForProduct,
+                ("discount", "product"),
+                discount=discount,
+                product=self.ticket_hobbyist,
+                price=Decimal("150.00"),
+                quantity=1,  # Per user
+            )
+
+        def free_category(parent_discount, category):
+            self.find_or_make(
+                cond.DiscountForCategory,
+                ("discount", "category",),
+                discount=parent_discount,
+                category=category,
+                percentage=Decimal("100.00"),
+                quantity=1,
+            )
+
+        # Early Bird Discount (general public)
+        self.early_bird = self.find_or_make(
+            cond.TimeOrStockLimitDiscount,
+            ("description", ),
+            description="Early Bird",
+            end_time=datetime(year=2016, month=11, day=1),
+            limit=165,  # Across all users
+        )
+        add_early_birds(self.early_bird)
+
+        # Early bird rates for speakers
+        self.speaker_ticket_discounts = self.find_or_make(
+            cond.SpeakerDiscount,
+            ("description", ),
+            description="Speaker Ticket Discount",
+            is_presenter=True,
+            is_copresenter=True,
+        )
+        add_early_birds(self.speaker_ticket_discounts)
+
+        # Primary speaker gets a free speaker dinner ticket
+        self.primary_speaker = self.find_or_make(
+            cond.SpeakerDiscount,
+            ("description", ),
+            description="Primary Speaker",
+            is_presenter=True,
+            is_copresenter=False,
+        )
+        self.find_or_make(
+            cond.DiscountForCategory,
+            ("discount", "category",),
+            discount=self.primary_speaker,
+            category=self.speakers_dinner_ticket,
+            percentage=Decimal("100.00"),
+            quantity=1,
+        )
+
+        # Professional-Like ticket inclusions
+        self.ticket_prolike_inclusions = self.find_or_make(
+            cond.IncludedProductDiscount,
+            ("description", ),
+            description="Included with Professional ticket",
+        )
+        self.ticket_prolike_inclusions.enabling_products.set([
+            self.ticket_fairy,
+            self.ticket_professional,
+            self.ticket_media,
+            self.ticket_sponsor,
+            self.ticket_speaker,
+        ])
+        self.free_category(self.ticket_prolike_inclusions, self.penguin_dinner)
+        self.free_category(self.ticket_prolike_inclusions, self.t_shirt)
+
+        # Hobbyist ticket inclusions
+        self.ticket_hobbyist_inclusions = self.find_or_make(
+            cond.IncludedProductDiscount,
+            ("description", ),
+            description="Included with Hobbyist ticket",
+        )
+        self.ticket_hobbyist_inclusions.enabling_products.set([
+            self.ticket_hobbyist,
+        ])
+        self.free_category(self.ticket_hobbyist_inclusions, self.t_shirt)
+
+        # Student ticket inclusions
+        self.ticket_student_inclusions = self.find_or_make(
+            cond.IncludedProductDiscount,
+            ("description", ),
+            description="Included with Student ticket",
+        )
+        self.ticket_student_inclusions.enabling_products.set([
+            self.ticket_student,
+        ])
+        self.free_category(self.ticket_student_inclusions, self.t_shirt)
+
+        # Team & volunteer ticket inclusions
+        self.ticket_staff_inclusions = self.find_or_make(
+            cond.IncludedProductDiscount,
+            ("description", ),
+            description="Included with staff ticket",
+        )
+        self.ticket_staff_inclusions.enabling_products.set([
+            self.ticket_team,
+            self.ticket_volunteer,
+        ])
+        self.free_category(self.ticket_staff_inclusions, self.penguin_dinner)
+
 
 
     def find_or_make(self, model, search_keys, **k):
-        ''' Either makes or finds an object of type _model_, with the given kwargs.
+        ''' Either makes or finds an object of type _model_, with the given
+        kwargs.
 
         Arguments:
             search_keys ([str, ...]): A sequence of keys that are used to search
