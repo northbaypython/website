@@ -8,6 +8,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from registrasion.models import inventory as inv
 from registrasion.models import conditions as cond
+from symposion import proposals
 
 class Command(BaseCommand):
     help = 'Populates the inventory with the LCA2017 inventory model'
@@ -16,6 +17,11 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
+
+        kinds = []
+        kinds.append(proposals.models.ProposalKind.objects.get(name="talk"))
+        self.main_conference_proposals = kinds
+
         self.populate_groups()
         self.populate_inventory()
         self.populate_restrictions()
@@ -387,11 +393,114 @@ class Command(BaseCommand):
                 )
 
     def populate_restrictions(self):
-        pass
+
+        # Hide the products that will eventually need a voucher
+        hide_voucher_products = self.find_or_make(
+            cond.GroupMemberFlag,
+            ("description", ),
+            description="Can see hidden products",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+        )
+        hide_voucher_products.group.set([self.group_unpublish])
+        hide_voucher_products.products.set([
+            self.ticket_media,
+            self.ticket_sponsor,
+        ])
+
+        # Volunteer tickets are for volunteers only
+        volunteers = self.find_or_make(
+            cond.GroupMemberFlag,
+            ("description", ),
+            description="Volunteer tickets",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+        )
+        volunteers.group.set([self.group_volunteers])
+        volunteers.products.set([
+            self.ticket_volunteer,
+        ])
+
+        # Team tickets are for team members only
+        team = self.find_or_make(
+            cond.GroupMemberFlag,
+            ("description", ),
+            description="Team tickets",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+        )
+        team.group.set([self.group_team])
+        team.products.set([
+            self.ticket_team,
+        ])
+
+        # Speaker tickets are for primary speakers only
+        speaker_tickets = self.find_or_make(
+            cond.SpeakerFlag,
+            ("description", ),
+            description="Speaker tickets",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+            is_presenter=True,
+            is_copresenter=False,
+        )
+        speaker_tickets.proposal_kind.set(self.main_conference_proposals)
+        speaker_tickets.products.set([self.ticket_speaker, ])
+
+        # Speaker dinner tickets are for primary and secondary speakers
+        speaker_dinner_tickets = self.find_or_make(
+            cond.SpeakerFlag,
+            ("description", ),
+            description="Speaker dinner tickets",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+            is_presenter=True,
+            is_copresenter=True,
+        )
+        speaker_dinner_tickets.proposal_kind.set([])
+        speaker_dinner_tickets.categories.set([self.speakers_dinner_ticket, ])
+
+        # PDNS tickets are complicated.
+        # They can be enabled by tickets
+        pdns_by_ticket = self.find_or_make(
+            cond.ProductFlag,
+            ("description", ),
+            description="PDNS available by ticket",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+        )
+        pdns_by_ticket.enabling_products.set([
+            self.ticket_professional,
+            self.ticket_fairy,
+            self.ticket_media,
+            self.ticket_sponsor,
+        ])
+        pdns_by_ticket.categories.set([self.pdns_breakfast, ])
+
+        # They are available to speakers
+        pdns_by_speaker = self.find_or_make(
+            cond.SpeakerFlag,
+            ("description", ),
+            description="PDNS available to speakers",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+            is_presenter=True,
+            is_copresenter=True,
+
+        )
+        pdns_by_speaker.proposal_kind.set(self.main_conference_proposals)
+        pdns_by_speaker.categories.set([self.pdns_breakfast, ])
+
+        # They are available to staff
+        pdns_by_staff = self.find_or_make(
+            cond.GroupMemberFlag,
+            ("description", ),
+            description="PDNS available to staff",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+
+        )
+        pdns_by_staff.group.set([
+            self.group_team,
+            self.group_volunteers,
+        ])
+        pdns_by_staff.categories.set([self.pdns_breakfast, ])
 
     def populate_discounts(self):
 
-        def add_early_birds(self, discount):
+        def add_early_birds(discount):
             self.find_or_make(
                 cond.DiscountForProduct,
                 ("discount", "product"),
@@ -417,104 +526,110 @@ class Command(BaseCommand):
                 quantity=1,  # Per user
             )
 
-        def free_category(parent_discount, category):
+        def free_category(parent_discount, category, quantity=1):
             self.find_or_make(
                 cond.DiscountForCategory,
                 ("discount", "category",),
                 discount=parent_discount,
                 category=category,
                 percentage=Decimal("100.00"),
-                quantity=1,
+                quantity=quantity,
             )
 
         # Early Bird Discount (general public)
-        self.early_bird = self.find_or_make(
+        early_bird = self.find_or_make(
             cond.TimeOrStockLimitDiscount,
             ("description", ),
             description="Early Bird",
             end_time=datetime(year=2016, month=11, day=1),
             limit=165,  # Across all users
         )
-        add_early_birds(self.early_bird)
+        add_early_birds(early_bird)
 
         # Early bird rates for speakers
-        self.speaker_ticket_discounts = self.find_or_make(
+        speaker_ticket_discounts = self.find_or_make(
             cond.SpeakerDiscount,
             ("description", ),
             description="Speaker Ticket Discount",
             is_presenter=True,
             is_copresenter=True,
         )
-        add_early_birds(self.speaker_ticket_discounts)
+        speaker_ticket_discounts.proposal_kind.set(
+            self.main_conference_proposals,
+        )
+        add_early_birds(speaker_ticket_discounts)
 
         # Primary speaker gets a free speaker dinner ticket
-        self.primary_speaker = self.find_or_make(
+        primary_speaker = self.find_or_make(
             cond.SpeakerDiscount,
             ("description", ),
             description="Primary Speaker",
             is_presenter=True,
             is_copresenter=False,
         )
-        self.find_or_make(
-            cond.DiscountForCategory,
-            ("discount", "category",),
-            discount=self.primary_speaker,
-            category=self.speakers_dinner_ticket,
-            percentage=Decimal("100.00"),
-            quantity=1,
-        )
+        free_category(primary_speaker, self.speakers_dinner_ticket)
 
         # Professional-Like ticket inclusions
-        self.ticket_prolike_inclusions = self.find_or_make(
+        ticket_prolike_inclusions = self.find_or_make(
             cond.IncludedProductDiscount,
             ("description", ),
             description="Included with Professional ticket",
         )
-        self.ticket_prolike_inclusions.enabling_products.set([
+        ticket_prolike_inclusions.enabling_products.set([
             self.ticket_fairy,
             self.ticket_professional,
             self.ticket_media,
             self.ticket_sponsor,
             self.ticket_speaker,
         ])
-        self.free_category(self.ticket_prolike_inclusions, self.penguin_dinner)
-        self.free_category(self.ticket_prolike_inclusions, self.t_shirt)
+        free_category(ticket_prolike_inclusions, self.penguin_dinner)
+        free_category(ticket_prolike_inclusions, self.t_shirt)
 
         # Hobbyist ticket inclusions
-        self.ticket_hobbyist_inclusions = self.find_or_make(
+        ticket_hobbyist_inclusions = self.find_or_make(
             cond.IncludedProductDiscount,
             ("description", ),
             description="Included with Hobbyist ticket",
         )
-        self.ticket_hobbyist_inclusions.enabling_products.set([
+        ticket_hobbyist_inclusions.enabling_products.set([
             self.ticket_hobbyist,
         ])
-        self.free_category(self.ticket_hobbyist_inclusions, self.t_shirt)
+        free_category(ticket_hobbyist_inclusions, self.t_shirt)
 
         # Student ticket inclusions
-        self.ticket_student_inclusions = self.find_or_make(
+        ticket_student_inclusions = self.find_or_make(
             cond.IncludedProductDiscount,
             ("description", ),
             description="Included with Student ticket",
         )
-        self.ticket_student_inclusions.enabling_products.set([
+        ticket_student_inclusions.enabling_products.set([
             self.ticket_student,
         ])
-        self.free_category(self.ticket_student_inclusions, self.t_shirt)
+        free_category(ticket_student_inclusions, self.t_shirt)
 
         # Team & volunteer ticket inclusions
-        self.ticket_staff_inclusions = self.find_or_make(
+        ticket_staff_inclusions = self.find_or_make(
             cond.IncludedProductDiscount,
             ("description", ),
             description="Included with staff ticket",
         )
-        self.ticket_staff_inclusions.enabling_products.set([
+        ticket_staff_inclusions.enabling_products.set([
             self.ticket_team,
             self.ticket_volunteer,
         ])
-        self.free_category(self.ticket_staff_inclusions, self.penguin_dinner)
+        free_category(ticket_staff_inclusions, self.penguin_dinner)
 
-
+        # Team & volunteer t-shirts, regardless of ticket type
+        staff_t_shirts = self.find_or_make(
+            cond.GroupMemberDiscount,
+            ("description", ),
+            description="Staff t-shirt",
+        )
+        staff_t_shirts.group.set([
+            self.group_team,
+            self.group_volunteers,
+        ])
+        free_category(staff_t_shirts, self.t_shirt, quantity=5)
 
     def find_or_make(self, model, search_keys, **k):
         ''' Either makes or finds an object of type _model_, with the given
