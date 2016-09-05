@@ -1,4 +1,6 @@
 from collections import namedtuple
+from datetime import timedelta
+from decimal import Decimal
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
 
@@ -17,7 +19,7 @@ class Command(BaseCommand):
     def populate_inventory(self):
         # Categories
 
-        self.tickets = self.find_or_make(
+        self.ticket = self.find_or_make(
             inv.Category,
             ("name",),
             name="Ticket",
@@ -111,18 +113,114 @@ class Command(BaseCommand):
 
         # Tickets
 
-        self.ticket_fairy = None
-        self.ticket_professional = None
-        self.ticket_hobbyist = None
-        self.ticket_student = None
-        self.ticket_miniconfs_mt = None
-        self.ticket_miniconfs_mon = None
-        self.ticket_miniconfs_tue = None
-        self.ticket_speaker = None
-        self.ticket_media = None
-        self.ticket_sponsor = None
-        self.ticket_team = None
-        self.ticket_volunteer = None
+        self.ticket_fairy = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Fairy Penguin Sponsor",
+            price=Decimal("1999.00"),
+            reservation_duration=hours(24),
+            order=1,
+        )
+        self.ticket_professional = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Professional",
+            price=Decimal("999.00"),
+            reservation_duration=hours(24),
+            order=10,
+        )
+        self.ticket_hobbyist = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Hobbyist",
+            price=Decimal("449.00"),
+            reservation_duration=hours(24),
+            order=20,
+        )
+        self.ticket_student = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Student",
+            price=Decimal("160.00"),
+            reservation_duration=hours(24),
+            order=30,
+        )
+        self.ticket_miniconfs_mt = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Monday and Tuesday Only",
+            price=Decimal("198.00"),
+            reservation_duration=hours(24),
+            order=40,
+        )
+        self.ticket_miniconfs_mon = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Monday Only",
+            price=Decimal("99.00"),
+            reservation_duration=hours(24),
+            order=42,
+        )
+        self.ticket_miniconfs_tue = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Tuesday Only",
+            price=Decimal("99.00"),
+            reservation_duration=hours(24),
+            order=44,
+        )
+        self.ticket_speaker = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Speaker",
+            price=Decimal("00.00"),
+            reservation_duration=hours(24),
+            order=50,
+        )
+        self.ticket_media = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Media",
+            price=Decimal("00.00"),
+            reservation_duration=hours(24),
+            order=60,
+        )
+        self.ticket_sponsor = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Sponsor",
+            price=Decimal("00.00"),
+            reservation_duration=hours(24),
+            order=70,
+        )
+        self.ticket_team = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Conference Organiser",
+            price=Decimal("00.00"),
+            reservation_duration=hours(24),
+            order=80,
+        )
+        self.ticket_volunteer = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Conference Volunteer",
+            price=Decimal("00.00"),
+            reservation_duration=hours(24),
+            order=90,
+        )
 
         # Penguin dinner
 
@@ -197,3 +295,7 @@ class Command(BaseCommand):
             a = model.objects.create(**k)
             self.stdout.write("CREATED: " + str(k))
             return a
+
+
+def hours(n):
+    return timedelta(hours=n)
