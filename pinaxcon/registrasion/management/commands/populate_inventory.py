@@ -563,7 +563,7 @@ class Command(BaseCommand):
         primary_speaker = self.find_or_make(
             cond.SpeakerDiscount,
             ("description", ),
-            description="Primary Speaker",
+            description="Complimentary for primary proposer",
             is_presenter=True,
             is_copresenter=False,
         )
@@ -573,7 +573,7 @@ class Command(BaseCommand):
         ticket_prolike_inclusions = self.find_or_make(
             cond.IncludedProductDiscount,
             ("description", ),
-            description="Included with Professional ticket",
+            description="Complimentary for ticket holder (Professional-level)",
         )
         ticket_prolike_inclusions.enabling_products.set([
             self.ticket_fairy,
@@ -589,7 +589,7 @@ class Command(BaseCommand):
         ticket_hobbyist_inclusions = self.find_or_make(
             cond.IncludedProductDiscount,
             ("description", ),
-            description="Included with Hobbyist ticket",
+            description="Complimentary for ticket holder (Hobbyist-level)",
         )
         ticket_hobbyist_inclusions.enabling_products.set([
             self.ticket_hobbyist,
@@ -600,7 +600,7 @@ class Command(BaseCommand):
         ticket_student_inclusions = self.find_or_make(
             cond.IncludedProductDiscount,
             ("description", ),
-            description="Included with Student ticket",
+            description="Complimentary for ticket holder (Student-level)",
         )
         ticket_student_inclusions.enabling_products.set([
             self.ticket_student,
@@ -611,7 +611,7 @@ class Command(BaseCommand):
         ticket_staff_inclusions = self.find_or_make(
             cond.IncludedProductDiscount,
             ("description", ),
-            description="Included with staff ticket",
+            description="Complimentary for ticket holder (staff/volunteer)",
         )
         ticket_staff_inclusions.enabling_products.set([
             self.ticket_team,
@@ -623,7 +623,7 @@ class Command(BaseCommand):
         staff_t_shirts = self.find_or_make(
             cond.GroupMemberDiscount,
             ("description", ),
-            description="Staff t-shirt",
+            description="T-shirts complimentary for staff and volunteers",
         )
         staff_t_shirts.group.set([
             self.group_team,
