@@ -407,6 +407,69 @@ class Command(BaseCommand):
             self.ticket_sponsor,
         ])
 
+        # Set limits.
+        public_ticket_cap = self.find_or_make(
+            cond.TimeOrStockLimitFlag,
+            ("description", ),
+            description="Public ticket cap",
+            condition=cond.FlagBase.DISABLE_IF_FALSE,
+            limit=450,
+        )
+        public_ticket_cap.products.set([
+            self.ticket_fairy,
+            self.ticket_professional,
+            self.ticket_hobbyist,
+            self.ticket_student,
+        ])
+
+        non_public_ticket_cap = self.find_or_make(
+            cond.TimeOrStockLimitFlag,
+            ("description", ),
+            description="Non-public ticket cap",
+            condition=cond.FlagBase.DISABLE_IF_FALSE,
+            limit=450,
+        )
+        non_public_ticket_cap.products.set([
+            self.ticket_speaker,
+            self.ticket_sponsor,
+            self.ticket_media,
+            self.ticket_team,
+            self.ticket_volunteer,
+        ])
+
+        penguin_dinner_cap = self.find_or_make(
+            cond.TimeOrStockLimitFlag,
+            ("description", ),
+            description="Penguin dinner ticket cap",
+            condition=cond.FlagBase.DISABLE_IF_FALSE,
+            limit=450,
+        )
+        penguin_dinner_cap.categories.set([
+            self.penguin_dinner,
+        ])
+
+        speakers_dinner_cap = self.find_or_make(
+            cond.TimeOrStockLimitFlag,
+            ("description", ),
+            description="Speakers dinner ticket cap",
+            condition=cond.FlagBase.DISABLE_IF_FALSE,
+            limit=150,
+        )
+        speakers_dinner_cap.categories.set([
+            self.speakers_dinner_ticket,
+        ])
+
+        pdns_cap = self.find_or_make(
+            cond.TimeOrStockLimitFlag,
+            ("description", ),
+            description="PDNS breakfast ticket cap",
+            condition=cond.FlagBase.DISABLE_IF_FALSE,
+            limit=400,
+        )
+        pdns_cap.categories.set([
+            self.pdns_breakfast,
+        ])
+
         # Volunteer tickets are for volunteers only
         volunteers = self.find_or_make(
             cond.GroupMemberFlag,
