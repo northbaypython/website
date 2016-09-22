@@ -156,6 +156,11 @@ INSTALLED_APPS = [
     # Registrasion
     "registrasion",
 
+    # Registrasion-stipe
+    "pinax.stripe",
+    "django_countries",
+    "registripe",
+
     #admin - required by registrasion ??
     "nested_admin",
 
@@ -223,11 +228,17 @@ PROPOSAL_FORMS = {
 PINAX_PAGES_HOOKSET = "pinaxcon.hooks.PinaxPagesHookSet"
 PINAX_BOXES_HOOKSET = "pinaxcon.hooks.PinaxBoxesHookSet"
 
+PINAX_STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "your test public key")
+PINAX_STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "your test secret key")
+PINAX_STRIPE_SEND_EMAIL_RECEIPTS = False
+
 # Registrasion Attendee profile model
 ATTENDEE_PROFILE_MODEL = "pinaxcon.registrasion.models.AttendeeProfile"
 # Registrasion attendee profile form -- must act on ATTENDEE_PROFILE_FORM
 # You only need to provide this if you're customising the form from the default
 # ATTENDEE_PROFILE_FORM = "pinaxcon.registrasion.forms.ProfileForm"
+
+INVOICE_CURRENCY = "AUD"
 
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
