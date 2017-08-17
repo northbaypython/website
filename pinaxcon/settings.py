@@ -141,7 +141,7 @@ MIDDLEWARE_CLASSES = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "ssl_redirect.middleware.SSLRedirectMiddleware",
     "pinaxcon.middleware.UnprependWWWMiddleware",
-
+    "pinaxcon.monkey_patch.MonkeyPatchMiddleware",
 ]
 
 ROOT_URLCONF = "pinaxcon.urls"
