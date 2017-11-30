@@ -47,8 +47,10 @@ urlpatterns = [
     url(r"^guides$",TemplateView.as_view(template_name="static_pages/attend/guides.html"), name="attend/guides"),
     url(r"^guide$", RedirectView.as_view(url="guides")),
 
-    url(r"^emergencies$", TemplateView.as_view(template_name="static_pages/attend/emergencies.html"), name="attend/emergencies"),
-    url(r"^emergency$", RedirectView.as_view(url="emergencies")),
+    url(r"^safety$", TemplateView.as_view(template_name="static_pages/safety.html"), name="safety"),
+    url(r"^emergencies$", RedirectView.as_view(url="safety")),
+    url(r"^emergency$", RedirectView.as_view(url="safety")),
+
     url(r"^attend/food$", TemplateView.as_view(template_name="static_pages/attend/food.html"), name="attend/food"),
     url(r"^food$", RedirectView.as_view(url="attend/food")),
     url(r"^attend/transit$", TemplateView.as_view(template_name="static_pages/attend/transit.html"), name="attend/transit"),
