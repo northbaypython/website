@@ -74,11 +74,12 @@ def special(context, user):
         speaker = user.speaker_profile.presentations.count() != 0
     except Exception:
         speaker = False
-    volunteer = "Volunteer" in ticket_type(context)
+    tt = ticket_type(context)
+    volunteer = "Volunteer" in tt
 
     if organiser:
         return "Organizer"
-    elif speaker:
+    elif speaker or "Speaker" in tt:
         return "Speaker"
     elif volunteer:
         return "Staff"
