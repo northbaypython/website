@@ -1,0 +1,66 @@
+<h1>Speakers</h1>
+
+<div class="row speaker-list">
+
+  <div class="speaker" >
+    <div class="image-alignment">
+      <div class="circle" style="border: 0;">
+          <div class="fill" style="background-image: url('{% static "images/brandon.jpg" %}');"></div>
+      </div>
+    </div>
+    <h4>Brandon Rhodes</h4>
+    <span class="presentation-title">Keynote Speaker</span>
+  </div>
+
+  <div class="speaker" >
+    <div class="image-alignment">
+      <div class="circle" style="border: 0;">
+          <div class="fill" style="background-image: url('{% static "images/cczona.jpg" %}');"></div>
+      </div>
+    </div>
+    <h4>Carina C. Zona</h4>
+    <span class="presentation-title">Keynote Speaker</span>
+  </div>
+
+  {% speakers as speakers %}
+  {% for speaker in speakers %}
+    <div class="speaker" >
+      <div class="image-alignment">
+        <div class="circle" style="border: 0;">
+          {% if speaker.photo %}
+            <div class="fill" style="background-image: url('{% thumbnail speaker.photo '600x600' %}');"></div>
+          {% else %}
+            <div class="fill" style="background-image: url('{% static "images/website-background.svg" %}');"></div>
+          {% endif %}
+        </div>
+      </div>
+      {% for presentation in speaker.presentations.all %}
+        <a href="{% url "schedule_presentation_detail" presentation.id %}">
+        <h4>{{ speaker.conferencespeaker.name }}</h4>
+          <span class="presentation-title">{{ presentation.title }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+  <div class="speaker" >
+    <div class="image-alignment">
+      <div class="circle" style="border: 0;">
+          <div class="fill" style="background-image: url('{% static "images/vmbrasseur.jpg" %}');"></div>
+      </div>
+    </div>
+    <h4>VM Brasseur</h4>
+    <span class="presentation-title">Speaker Training</span>
+  </div>
+
+</div>
+</div>
+
+<div class="homepage-block-footer full-width">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <a class="btn btn-lg btn-primary btn-shadow" href="/schedule">See the schedule</a>
+    </div>
+  </div>
+</div>
