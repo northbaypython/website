@@ -15,14 +15,14 @@ All transactions are performed through a payment gateway facility and use SSL en
 Cancellation Policy
 -------------------
 
-**Cancellations made prior to November 2, 2017**: Incur a cancellation fee of $25 or 15% of the ticket cost, whichever is greater, which will be deducted from any registration fee paid. The balance will be refunded.
+**Cancellations made prior to October 2, 2018**: Incur a cancellation fee of $25 or 15% of the ticket cost, whichever is greater, which will be deducted from any registration fee paid. The balance will be refunded.
 
-**Cancellations made after November 2, 2017**: No refund.
+**Cancellations made after October 2, 2018**: No refund.
 
 Substitutions
 -------------
 
-You may substitute another person, however you must contact us with this person's details. If you wish to substitute after November 2, 2017 please note that we will not be able to provide any personalized items.
+You may substitute another person, however you must contact us with this person's details. If you wish to substitute after October 2, 2018 please note that we will not be able to provide any personalized items.
 
 Privacy Notice
 --------------
@@ -77,7 +77,7 @@ Attendees will have a way to visibly signal their preference for photography at 
 * Permission required: Ask before photographing
 * Opt-out: Photographs are never okay, don't ask
 
-Attendees who are not visibly signaling their preference should be asked for permission before photographing.  There is no prior opt-in for audio or video recordings. You must always ask before recording. 
+Attendees who are not visibly signaling their preference should be asked for permission before photographing.  There is no prior opt-in for audio or video recordings. You must always ask before recording.
 
 The event may have one or more staff taking photographs and/or audio or video recordings during the event. These staff will respect attendees' preferences regarding photography and recordings.
 
