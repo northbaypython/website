@@ -1,3 +1,5 @@
+### The North Bay Python 2018 CFP is open!
+
 We've got lots of good information and resources below that you should read, but in case you've already read it and want to dive in now:
 
 <div class="btn-group">
@@ -12,9 +14,9 @@ In the interest of transparency, we have documented our [selection process](/pro
 
 + **July 5**: CFP opens
 + **August 10**: CFP closes
-+ **Week of August 31**: Acceptance notifications sent
-+ **Week of September 7**: Speaker confirmations due; program finalized and announced
-+ **November 3-4 2–3**: Conference happens!
++ **Week of September 10**: Acceptance notifications sent
++ **Week of September 17**: Speaker confirmations due; program finalized and announced
++ **November 3–4**: Conference happens!
 
 
 ## Speaker Benefits
@@ -31,6 +33,20 @@ We will make every effort to provide accommodations for speakers and attendees o
 
 North Bay Python is a conference in support of the local programmer community outside of the core San Francisco Bay Area tech scene. We aim to feature a mix of local and non-local speakers to offer a program with broad appeal.
 
+
+## Audience
+
+We anticipate more than 300 attendees at our 2018 conference. In 2017, we had 230 attendees from California and beyond, including:
+
++ 78% from the San Francisco Bay Area, including 25% from Sonoma County
++ 5% from elsewhere in California
++ 17% from other US states, and internationally.
+
+30% of attendees were women or non-binary.
+
+Our attendees range in experience from students and new graduates, through to career professionals with more than 30 years in the industry. Our professional attendees work in many roles, including software engineers, CTO-level executives, DevOps engineers, data scientists, front-end engineers and mobile developers.
+
+48% of our attendees had never attended a Python-focused conference before North Bay Python. 15% of our attendees made North Bay Python their first tech conference.
 
 ## Talk Formats<a name="talk-formats"></a>
 
@@ -68,7 +84,7 @@ First time speakers are welcomed and encouraged. In order to support speakers, w
 
 You can [contact the program committee](mailto:program@northbaypython.org) via email or drop by [#nbpy on the Freenode IRC network](https://webchat.freenode.net/?channels=%23nbpy) anytime to be connected with a mentor and receive guidance structuring your proposal and talk.
 
-Our office hours will be held twice every week **Wednesday at 7pm** and **Friday at 3pm** Pacific Time starting July 11 and finishing August 8. We'll be holding them on IRC, a chat protocol, in the #nbpy channel on the Freenode network. New to IRC? You can use [this web client](https://webchat.freenode.net/?channels=%23nbpy) to connect.
+Our office hours will be held twice every week **Wednesday at 7pm** and **Friday at 3pm** Pacific Time starting July 11 and finishing August 10. We'll be holding them on IRC, a chat protocol, in the #nbpy channel on the Freenode network. New to IRC? You can use [this web client](https://webchat.freenode.net/?channels=%23nbpy) to connect.
 
 We're happy to help with any of the following:
 
