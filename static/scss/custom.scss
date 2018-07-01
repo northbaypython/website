@@ -27,7 +27,13 @@ section {
 footer {
   padding-top: 40px;
   padding-bottom: 20px;
-  text-shadow: 0px 0px 10px white;
+  //text-shadow: 0px 0px 0.5px lighten($logo-sky-blue, 0.1);
+  //color: white;
+}
+
+.ftr-wrapper {
+  background-image: linear-gradient(transparent, $background-filter, $background-filter, $background-filter);
+  //background-color: black;
 }
 
 p.login-signup {
@@ -99,8 +105,8 @@ body.auth .panel-heading .panel-title span.pull-right {
 }
 
 #content_body {
-  background-color: $background-filter-transparent;
-  box-shadow: 0px 0px 2em $background-filter; //, inset 0px -5px 1em rgba(0, 0, 0, 0.8);
+  //background-color: $background-filter-transparent;
+  //box-shadow: 0px 0px 2em $background-filter; //, inset 0px -5px 1em rgba(0, 0, 0, 0.8);
 }
 
 
@@ -206,7 +212,7 @@ $homepage-block-min-height: 480px;
   position: absolute;
   background-size: cover;
   background-position: center;
-  opacity: 0.3;
+  opacity: 0.7;
   background-blend-mode: multiply;
   z-index: -9999;
   box-shadow: $box-shadow;
@@ -274,7 +280,7 @@ $homepage-block-min-height: 480px;
 }
 
 .hphbg {
-  background-color: #449fe8;
+  background-color: $logo-sky-blue;
   opacity: 1;
   /* will be "on top", if browser supports it */
   background-size: 100%;
@@ -297,10 +303,12 @@ $homepage-block-min-height: 480px;
   bottom: 0;
   right: 0;
   z-index: -9999;
-  background-color: #449fe8;
-
-
+  //background-color: $logo-sky-blue;
   background-image: linear-gradient(transparent, black);
+
+  &.homepage-footer {
+    height: 10%;
+  }
 }
 
 .clouds {
@@ -317,6 +325,17 @@ $homepage-block-min-height: 480px;
     background-image: url("../images/homepage-clouds-bottom.svg");
   }
 
+  &.ftr {
+    background-image: url("../images/homepage-clouds-bottom.svg");
+    opacity: 0.1;
+  }
+
+  &.hdr {
+    background-image: url("../images/homepage-clouds-bottom.svg");
+    background-position: top;
+    opacity: 0.6;
+  }
+
 }
 
 
@@ -327,8 +346,11 @@ $homepage-block-min-height: 480px;
   border-radius: 100%;
   overflow: hidden;
   width: 100%;
-  border: 0.05em solid black;
   box-shadow: 0px 0px 1em $gray-dark;
+
+  &.border {
+    border: 0.05em solid black;
+  }
 }
 
 .circle:before {
@@ -362,7 +384,8 @@ $homepage-block-min-height: 480px;
 }
 
 .website-background {
-  background-image: url("../images/website-background.svg");
+  /*background-image: url("../images/website-background.svg");*/
+  background-color: $logo-sky-blue;
 }
 
 .mystic-background {

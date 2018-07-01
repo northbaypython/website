@@ -1,8 +1,13 @@
 /* COLORS */
 // Used by links, buttons, and other background bits.
 $brand-primary: darken(rgb(0, 202, 10), 20%);
-$background-filter: hsla(207, 60%, 85%, 1.0);
+
+$logo-sky-blue: #449fe8;
+//$background-filter: hsla(207, 60%, 85%, 1.0);
+$background-filter: $logo-sky-blue;
+
 $background-filter-transparent: change-color($background-filter, $alpha: 0.5);
+
 
 /* TEXT */
 $font-family-sans-serif:  'Montserrat', Arial, sans-serif;
