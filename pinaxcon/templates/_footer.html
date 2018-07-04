@@ -9,10 +9,11 @@
   </div>
 
   <div class="footer-copy">
-    <p>&copy; 2017 North Bay Python, member project of <a href="https://sfconservancy.org" >Software Freedom Conservancy</a>, a 501(c)(3) charity.</p>
+    <p>&copy; 2018 North Bay Python, member project of <a href="https://sfconservancy.org" >Software Freedom Conservancy</a>, a 501(c)(3) charity.</p>
 
     {% sponsors "platinum" as platinum %}
 
+    {% comment %}
     <p>We acknowledge the support of our Platinum sponsor{{ platinum|length|pluralize}},
       {% for sponsor in platinum %}
         {% if forloop.last and not forloop.first %}
@@ -20,6 +21,8 @@
         {% endif %}
         {{ sponsor }}{% if forloop.last %}.{% endif %}
       {% endfor %}
+
+      {% endcomment %}
 
     <p>
       <a href="https://facebook.com/northbaypython">Facebook</a>

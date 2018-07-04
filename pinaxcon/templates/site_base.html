@@ -31,7 +31,8 @@
 
 {% block body_base %}
 
-  <div class="homepage-block-bg website-background"></div>
+  <div class="homepage-background-opacity website-background"></div>
+  <div class="clouds hdr"></div>
 
   <div id="background-filter">
     <section id="content_body">
@@ -54,13 +55,17 @@
 
 
 {% block footer_base %}
-  <div class="container">
+<div class="clouds ftr"></div>
+
+<div class="ftr-wrapper">
+  <div class="container" >
     <footer>
       {% block footer %}
           {% include "_footer.html" %}
       {% endblock %}
     </footer>
   </div>
+</div>
 {% endblock %}
 
 

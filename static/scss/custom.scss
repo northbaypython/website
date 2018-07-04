@@ -27,7 +27,13 @@ section {
 footer {
   padding-top: 40px;
   padding-bottom: 20px;
-  text-shadow: 0px 0px 10px white;
+  //text-shadow: 0px 0px 0.5px lighten($logo-sky-blue, 0.1);
+  //color: white;
+}
+
+.ftr-wrapper {
+  background-image: linear-gradient(transparent, $background-filter, $background-filter, $background-filter);
+  //background-color: black;
 }
 
 p.login-signup {
@@ -99,8 +105,8 @@ body.auth .panel-heading .panel-title span.pull-right {
 }
 
 #content_body {
-  background-color: $background-filter-transparent;
-  box-shadow: 0px 0px 2em $background-filter; //, inset 0px -5px 1em rgba(0, 0, 0, 0.8);
+  //background-color: $background-filter-transparent;
+  //box-shadow: 0px 0px 2em $background-filter; //, inset 0px -5px 1em rgba(0, 0, 0, 0.8);
 }
 
 
@@ -212,6 +218,18 @@ $homepage-block-min-height: 480px;
   box-shadow: $box-shadow;
 }
 
+.homepage-background-opacity {
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.7;
+  z-index: -9999;
+
+  background-blend-mode: multiply;
+}
+
 .homepage-block.dark {
   background: $gray-base;
   color: white;
@@ -262,7 +280,7 @@ $homepage-block-min-height: 480px;
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: -9999;
+  z-index: -7999;
 
   &.main {
     background-image: url("../images/hills.svg");
@@ -273,13 +291,78 @@ $homepage-block-min-height: 480px;
   }
 }
 
+.hphbg {
+  background-color: $logo-sky-blue;
+  opacity: 1;
+  /* will be "on top", if browser supports it */
+  background-size: 100%;
+  background-position: bottom;
+  top: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.floop {
+
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -9999;
+  //background-color: $logo-sky-blue;
+  background-image: linear-gradient(transparent, black);
+
+  &.homepage-footer {
+    height: 10%;
+  }
+}
+
+.clouds {
+  background-position: bottom;
+  background-repeat: repeat-x;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  //right: 0;
+  z-index: -9000;
+
+  &.main {
+    background-image: url("../images/homepage-clouds-bottom.svg");
+  }
+
+  &.ftr {
+    background-image: url("../images/homepage-clouds-bottom.svg");
+    opacity: 0.1;
+  }
+
+  &.hdr {
+    background-image: url("../images/homepage-clouds-bottom.svg");
+    background-position: top;
+    opacity: 0.6;
+  }
+
+}
+
+
+
+
 .circle {
   position: relative;
   border-radius: 100%;
   overflow: hidden;
   width: 100%;
-  border: 0.05em solid black;
   box-shadow: 0px 0px 1em $gray-dark;
+
+  &.border {
+    border: 0.05em solid black;
+  }
 }
 
 .circle:before {
@@ -313,16 +396,23 @@ $homepage-block-min-height: 480px;
 }
 
 .website-background {
-  background-image: url("../images/website-background.svg");
+  /*background-image: url("../images/website-background.svg");*/
+  background-color: $logo-sky-blue;
 }
 
 .mystic-background {
-  background-image: url("../images/mystic.jpg");
+  background-image: url("../images/mystic-marquee.jpg");
 }
 
 .djangogirls-background {
   background-image: url("../images/django-girls-2014.jpg");
 }
+
+
+.homepage-header-background {
+  background-image: url("../images/homepage-header-background.svg");
+}
+
 
 .sponsor-list a img {
   width: 100%;
