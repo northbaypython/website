@@ -35,7 +35,7 @@ Contact Information
 
 If you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact a member of conference staff. Conference staff will be wearing t-shirts and/or badges that clearly identify them as staff. You can email the incident response team at [safety@northbaypython.org](mailto:safety@northbaypython.org). You may also contact venue staff and ask to be put in touch with conference chair [Christopher Neugebauer](mailto:chrisjrn@northbaypython.org).
 
-If the matter is especially urgent, please dial our Code of Conduct and safety incident hotline: +1 (707) 755-7357. This number will automatically route to a member of the conference staff who can render assistance.
+If the matter is especially urgent, please dial our Code of Conduct and safety incident hotline (we'll publish the phone number closer to the date of the event). This number will automatically route to a member of the conference staff who can render assistance.
 
 Conference staff will be happy to help participants contact hotel/venue security or local law enforcement, provide escorts, or otherwise assist those experiencing harassment to feel safe for the duration of the conference. We value your attendance.
 
