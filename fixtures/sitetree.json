@@ -59,7 +59,7 @@
     "model": "sitetree.treeitem",
     "pk": 7,
     "fields": {
-        "title": "Call for Proposals (Closed)",
+        "title": "Call for Proposals",
         "hint": "",
         "url": "/program/call-for-proposals",
         "urlaspattern": false,
@@ -75,7 +75,7 @@
         "access_restricted": false,
         "access_perm_type": 1,
         "parent": 24,
-        "sort_order": 39,
+        "sort_order": 4,
         "access_permissions": []
     }
 },
@@ -88,7 +88,7 @@
         "url": "/attend",
         "urlaspattern": false,
         "tree": 1,
-        "hidden": false,
+        "hidden": true,
         "alias": null,
         "description": "",
         "inmenu": true,
@@ -196,6 +196,54 @@
         "access_perm_type": 1,
         "parent": 1,
         "sort_order": 33,
+        "access_permissions": []
+    }
+},
+{
+    "model": "sitetree.treeitem",
+    "pk": 14,
+    "fields": {
+        "title": "Reporting an Incident",
+        "hint": "",
+        "url": "/code-of-conduct/harassment-incidents",
+        "urlaspattern": false,
+        "tree": 1,
+        "hidden": false,
+        "alias": null,
+        "description": "",
+        "inmenu": true,
+        "inbreadcrumbs": true,
+        "insitetree": true,
+        "access_loggedin": false,
+        "access_guest": false,
+        "access_restricted": false,
+        "access_perm_type": 1,
+        "parent": 8,
+        "sort_order": 15,
+        "access_permissions": []
+    }
+},
+{
+    "model": "sitetree.treeitem",
+    "pk": 15,
+    "fields": {
+        "title": "Staff Procedures",
+        "hint": "",
+        "url": "/code-of-conduct/harassment-staff-procedures",
+        "urlaspattern": false,
+        "tree": 1,
+        "hidden": false,
+        "alias": null,
+        "description": "",
+        "inmenu": true,
+        "inbreadcrumbs": true,
+        "insitetree": true,
+        "access_loggedin": false,
+        "access_guest": false,
+        "access_restricted": false,
+        "access_perm_type": 1,
+        "parent": 8,
+        "sort_order": 17,
         "access_permissions": []
     }
 },
@@ -400,7 +448,7 @@
         "url": "/wiki",
         "urlaspattern": false,
         "tree": 1,
-        "hidden": false,
+        "hidden": true,
         "alias": null,
         "description": "",
         "inmenu": true,
@@ -472,7 +520,7 @@
         "url": "/program/events",
         "urlaspattern": false,
         "tree": 1,
-        "hidden": false,
+        "hidden": true,
         "alias": null,
         "description": "",
         "inmenu": true,
@@ -483,7 +531,7 @@
         "access_restricted": false,
         "access_perm_type": 1,
         "parent": 24,
-        "sort_order": 4,
+        "sort_order": 32,
         "access_permissions": []
     }
 },
@@ -541,7 +589,7 @@
     "fields": {
         "title": "How to Pitch Your Manager",
         "hint": "",
-        "url": "/attend/business-case",
+        "url": "/attend/business-cases",
         "urlaspattern": false,
         "tree": 1,
         "hidden": false,
@@ -604,102 +652,6 @@
         "access_perm_type": 1,
         "parent": 8,
         "sort_order": 36,
-        "access_permissions": []
-    }
-},
-{
-    "model": "sitetree.treeitem",
-    "pk": 38,
-    "fields": {
-        "title": "Transparency Reports",
-        "hint": "",
-        "url": "/about/transparency",
-        "urlaspattern": false,
-        "tree": 1,
-        "hidden": true,
-        "alias": null,
-        "description": "",
-        "inmenu": true,
-        "inbreadcrumbs": true,
-        "insitetree": true,
-        "access_loggedin": false,
-        "access_guest": false,
-        "access_restricted": false,
-        "access_perm_type": 1,
-        "parent": 1,
-        "sort_order": 38,
-        "access_permissions": []
-    }
-},
-{
-    "model": "sitetree.treeitem",
-    "pk": 39,
-    "fields": {
-        "title": "Accepted Talks",
-        "hint": "",
-        "url": "/schedule/general-sessions/list/",
-        "urlaspattern": false,
-        "tree": 1,
-        "hidden": false,
-        "alias": null,
-        "description": "",
-        "inmenu": true,
-        "inbreadcrumbs": true,
-        "insitetree": true,
-        "access_loggedin": false,
-        "access_guest": false,
-        "access_restricted": false,
-        "access_perm_type": 1,
-        "parent": 24,
-        "sort_order": 32,
-        "access_permissions": []
-    }
-},
-{
-    "model": "sitetree.treeitem",
-    "pk": 40,
-    "fields": {
-        "title": "Financial Aid",
-        "hint": "",
-        "url": "/attend/finaid",
-        "urlaspattern": false,
-        "tree": 1,
-        "hidden": false,
-        "alias": null,
-        "description": "",
-        "inmenu": true,
-        "inbreadcrumbs": true,
-        "insitetree": true,
-        "access_loggedin": false,
-        "access_guest": false,
-        "access_restricted": false,
-        "access_perm_type": 1,
-        "parent": 8,
-        "sort_order": 40,
-        "access_permissions": []
-    }
-},
-{
-    "model": "sitetree.treeitem",
-    "pk": 42,
-    "fields": {
-        "title": "Guide Index",
-        "hint": "",
-        "url": "/guides",
-        "urlaspattern": false,
-        "tree": 1,
-        "hidden": false,
-        "alias": null,
-        "description": "",
-        "inmenu": true,
-        "inbreadcrumbs": true,
-        "insitetree": true,
-        "access_loggedin": false,
-        "access_guest": false,
-        "access_restricted": false,
-        "access_perm_type": 1,
-        "parent": 8,
-        "sort_order": 42,
         "access_permissions": []
     }
 }
