@@ -15,6 +15,7 @@ class ConferenceSpeakerForm(forms.ModelForm):
             'invite_email',
             'invite_token',
             'annotation',
+            'reviewer',
         ]
 
     def __init__(self, *a, **k):
