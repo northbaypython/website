@@ -9,9 +9,10 @@ Setup
 Development
 ~~~~~~~~~~~
 1. pip install -r requirements/base.txt
-2. python manage.py createsuperuser
-3. python manage.py loaddata fixtures/*
-4. python manage.py migrate
+2. python manage.py migrate
+3. python manage.py createsuperuser
+4. python manage.py loaddata fixtures/*
+5. python manage.py runserver
 
 Prod
 ~~~~
