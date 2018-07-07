@@ -111,7 +111,6 @@ Your speaker profile includes a space for you to describe your prior experience 
   <a class="btn btn-lg btn-primary" href="/dashboard">Submit a Proposal</a>
 </div>
 
-
 ## How to Write Your Proposal<a name="how-to-write-your-proposal"></a>
 
 If you want to speak, here's a very rough process of what you should do next:
@@ -122,3 +121,11 @@ If you want to speak, here's a very rough process of what you should do next:
 + Attend our office hours to get help building up your submission
 + Submit your proposal
 + Practice!
+
+## Plans Changed and Need to Decline?<a name="need-to-decline"></a>
+
+We understand that life is unpredictable and you may not be able to speak at North Bay Python even if we accept your proposal. That's OK!
+
+If we accept your talk, you have the option to confirm or decline. Already confirmed but something came up? That's OK, too, we just need you to let us know as soon as possible! We always have backups.
+
+Please email us at [program@northbaypython.org](mailto:program@northbaypython.org) to let us know if you have a change of plans.
