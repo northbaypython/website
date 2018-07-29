@@ -51,7 +51,9 @@ Our attendees range in experience from students and new graduates, through to ca
 
 ## Talk Formats<a name="talk-formats"></a>
 
-**Most of the talk slots will be short**&mdash;approximately 25 to 30 minutes. If your ideas would benefit from a longer slot, please explain in your submission how you would use the additional time.
+**Most of the talk slots will be short**&mdash;approximately 30 minutes. If your ideas would benefit from a longer slot, please explain in your submission how you would use the additional time.
+
+**North Bay Python will not be facilitating audience Q&A during scheduled talk slots, in favor of attendees asking questions during breaks.** If you're used to ending a 30-minute talk at 25 minutes and using 5 for Q&A, please plan instead on speaking all the way to 30 minutes, and think of it as an opportunity to toss in a few bonus details for the audience!
 
 
 ## Topics<a name="topics"></a>
