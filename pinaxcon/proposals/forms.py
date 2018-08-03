@@ -36,7 +36,7 @@ class ProposalForm(forms.ModelForm, ProposalMixIn):
             "Edit using "
             "<a href='http://daringfireball.net/projects/markdown/basics' "
             "target='_blank'>Markdown</a>.")
-        self.fields["abstract"].help_text = ("Detailed outline. Will "
+        self.fields["abstract"].help_text = ("Detailed abstract. Will "
             "be made public if your proposal is accepted. Edit "
             "using <a href='http://daringfireball.net/projects/markdown/basics' "
             "target='_blank'>Markdown</a>.")
