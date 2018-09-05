@@ -11,7 +11,7 @@ from registrasion.models import conditions as cond
 from symposion import proposals
 
 class Command(BaseCommand):
-    help = 'Populates the inventory with the NBPy2017 inventory model'
+    help = 'Populates the inventory with the NBPy2018 inventory model'
 
     def add_arguments(self, parser):
         pass
@@ -39,6 +39,11 @@ class Command(BaseCommand):
             ("name", ),
             name="Conference volunteers",
         )
+        self.group_rejected_or_waitlist = self.find_or_make(
+            Group,
+            ("name", ),
+            name="Rejected or Waitlisted Speakers",
+        )
         self.group_unpublish = self.find_or_make(
             Group,
             ("name", ),
@@ -65,7 +70,7 @@ class Command(BaseCommand):
             ("name",),
             name="T-Shirt",
             description="Commemorative conference t-shirts, featuring secret "
-                        "North Bay Python 2017 artwork. Details of sizing and "
+                        "North Bay Python 2018 artwork. Details of sizing and "
                         "manufacturer are on our <a href='/attend/tshirt'>"
                         "t-shirts page</a>",
             required = False,
@@ -126,6 +131,15 @@ class Command(BaseCommand):
             ("name", "category",),
             category=self.ticket,
             name="Speaker",
+            price=Decimal("00.00"),
+            reservation_duration=hours(24),
+            order=50,
+        )
+        self.ticket_talk_proposer = self.find_or_make(
+            inv.Product,
+            ("name", "category",),
+            category=self.ticket,
+            name="Talk Proposer",
             price=Decimal("00.00"),
             reservation_duration=hours(24),
             order=50,
@@ -270,6 +284,19 @@ class Command(BaseCommand):
         team.products.set([
             self.ticket_team,
         ])
+
+        # Team tickets are for team members only
+        team = self.find_or_make(
+            cond.GroupMemberFlag,
+            ("description", ),
+            description="Talk proposer tickets",
+            condition=cond.FlagBase.ENABLE_IF_TRUE,
+        )
+        team.group.set([self.group_rejected_or_waitlist])
+        team.products.set([
+            self.ticket_talk_proposer,
+        ])
+
 
         # Speaker tickets are for primary speakers only
         speaker_tickets = self.find_or_make(
