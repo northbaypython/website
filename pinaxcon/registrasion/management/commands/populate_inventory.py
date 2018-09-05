@@ -361,7 +361,7 @@ class Command(BaseCommand):
             cond.TimeOrStockLimitDiscount,
             ("description", ),
             description="Early Bird",
-            end_time=datetime(year=2017, month=10, day=20),
+            end_time=datetime(year=2018, month=9, day=30),
             limit=100,  # Across all users
         )
         add_early_birds(early_bird)
