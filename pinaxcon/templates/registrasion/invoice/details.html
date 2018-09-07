@@ -22,18 +22,18 @@
 {% endblock %}
 
 {% block subheading %}
-  North Bay Python. December 2 &amp; 3 2017. Petaluma, California.
+  North Bay Python. November 3 &amp; 4 2018. Petaluma, California.
 {% endblock %}
 
 {% block invoice_intro %}
   {% if invoice.is_unpaid %}
-    This is a registration summary for North Bay Python 2017. It is not confirmed until paid in full.
+    This is a registration summary for North Bay Python 2018. It is not confirmed until paid in full.
   {% elif invoice.is_void %}
-    This is a void registration summary for North Bay Python 2017. It is provided for informational purposes only.
+    This is a void registration summary for North Bay Python 2018. It is provided for informational purposes only.
   {% elif invoice.is_refunded %}
-    This is a refunded registration summary for North Bay Python 2017. It is provided for informational purposes only.
+    This is a refunded registration summary for North Bay Python 2018. It is provided for informational purposes only.
   {% elif invoice.is_paid %}
-    This is a confirmed registration summary for North Bay Python 2017.
+    This is a confirmed registration summary for North Bay Python 2018.
   {% endif %}
 {% endblock %}
 
