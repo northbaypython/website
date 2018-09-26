@@ -117,7 +117,7 @@
                 {% endif %}
               </div>
             </div>
-            {% for presentation in speaker.presentations.all %}
+            {% for presentation in speaker.all_presentations %}
               <a href="{% url "schedule_presentation_detail" presentation.id %}">
               <h4>{{ speaker.conferencespeaker.name }}</h4>
                 <span class="presentation-title">{{ presentation.title }}</span>
