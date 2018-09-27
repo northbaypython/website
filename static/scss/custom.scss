@@ -476,6 +476,10 @@ span.date {
 
 footer .footer-copy {
   margin-left: 1em;
+  
+  p {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 1200px) and (min-width: 992px) {
