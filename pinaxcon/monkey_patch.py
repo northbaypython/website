@@ -1,6 +1,10 @@
+from __future__ import absolute_import
+
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
+
+
 from functools import wraps
 
 
@@ -13,6 +17,7 @@ class MonkeyPatchMiddleware(object):
 
 def do_monkey_patch():
     patch_stripe_card_defaults()
+    patch_registrasion_views()
     patch_conference_schedule()
 
     # Remove this function from existence
@@ -33,6 +38,13 @@ def patch_stripe_card_defaults():
         return old_sync_card(customer, d)
 
     sources.sync_card = sync_card
+
+
+def patch_registrasion_views():
+    from registrasion import views as registrasion_views
+    from django.views.decorators.csrf import csrf_exempt
+
+    registrasion_views.invoice_mailout = csrf_exempt(registrasion_views.invoice_mailout)
 
 
 def patch_conference_schedule():
