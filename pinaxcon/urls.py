@@ -47,6 +47,11 @@ urlpatterns = [
     url(r"^guides$",TemplateView.as_view(template_name="static_pages/attend/guides.html"), name="attend/guides"),
     url(r"^guide$", RedirectView.as_view(url="guides")),
 
+    # go
+    url(r"^go/fly$", TemplateView.as_view(template_name="static_pages/attend/fly.html"), name="go/fly"),
+    url(r"^go/stay$", TemplateView.as_view(template_name="static_pages/attend/stay.html"), name="go/stay"),
+    url(r"^go/day-trip$", TemplateView.as_view(template_name="static_pages/attend/day-trip.html"), name="go/day-trip`"),
+
     url(r"^safety$", TemplateView.as_view(template_name="static_pages/safety.html"), name="safety"),
     url(r"^emergencies$", RedirectView.as_view(url="safety")),
     url(r"^emergency$", RedirectView.as_view(url="safety")),
