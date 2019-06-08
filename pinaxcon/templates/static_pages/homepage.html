@@ -6,7 +6,7 @@
 {% load sponsorship_tags %}
 {% load schedule_tags %}
 
-{% block head_title %}November 3 and 4, 2018{% endblock %}
+{% block head_title %}November 2 and 3, 2019{% endblock %}
 
 {% block body_class %}home{% endblock %}
 
@@ -32,8 +32,8 @@
           </h3>
 
           <h4>
-            November 3 &amp; 4, 2018<br/>
-            Tickets on sale now!
+            November 2 &amp; 3, 2019<br/>
+            {% comment %}Tickets on sale now!{% endcomment %}
           </h4>
         </div>
         <div class="col-md-4 col-md-offset-2 email-signup-panel">
@@ -69,13 +69,14 @@
 
     <div class="container homepage-block-footer">
       <div>
-        <a class="btn btn-primary btn-lg" href="/attend">Buy a Ticket!</a>
+        <a class="btn btn-primary btn-lg" href="/cfp">Submit a Proposal!</a>
         <a class="btn btn-default btn-lg " href="https://twitter.com/northbaypython">Twitter</a>
         <a class="btn btn-default btn-lg" href="https://facebook.com/northbaypython">Facebook</a>
       </div>
     </div>
   </div>
 
+{% comment %}
   <div class="jumbotron homepage-block white">
     <div class="container homepage-block-content">
       <h1>Speakers</h1>
@@ -123,7 +124,6 @@
           </div>
         {% endfor %}
 
-{% comment %}
         <div class="speaker" >
           <div class="image-alignment">
             <div class="circle" style="border: 0;">
@@ -135,7 +135,6 @@
         </div>
 
       </div>
-{% endcomment %}
     </div>
 
     <div class="homepage-block-footer full-width">
@@ -148,6 +147,7 @@
       </div>
     </div>
   </div>
+{% endcomment %}
 
 
   <div class="jumbotron homepage-block dark">
