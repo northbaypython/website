@@ -189,6 +189,18 @@ $homepage-block-min-height: 480px;
   min-height: ($homepage-block-min-height - 80px);
 }
 
+
+.homepage-block-content-cloudsep {
+  min-height: ($homepage-block-min-height - 200px);
+}
+
+
+.homepage-block-bloop {
+  min-height: 120px;
+}
+
+
+
 /* ??? */
 .homepage-block-footer {
 
@@ -304,7 +316,7 @@ $homepage-block-min-height: 480px;
   height: 100%;
 }
 
-.floop {
+.grey-gradient {
 
   background-size: 100%;
   background-position: bottom;
@@ -476,7 +488,7 @@ span.date {
 
 footer .footer-copy {
   margin-left: 1em;
-  
+
   p {
     font-size: 16px;
   }
@@ -522,8 +534,18 @@ footer .footer-copy {
   }
 }
 
+.homepage-title {
+  font-weight: 600;
+}
+
 .homepage-subtitle {
   font-size: $font-size-h3;
+  line-height: 1.25;
+  font-weight: 300;
+
+  .wrap-break {
+    display: inline-block;
+  }
 }
 
 .navbar-toggle {
