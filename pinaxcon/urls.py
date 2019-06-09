@@ -44,6 +44,8 @@ urlpatterns = [
     url(r"^attend/tshirt$", TemplateView.as_view(template_name="static_pages/attend/tshirt.html"), name="attend/tshirt"),
     url(r"^attend/accessibility-and-accommodations$",TemplateView.as_view(template_name="static_pages/attend/accommodations.html"), name="attend/accessibility-and-accommodations"),
     url(r"^accessibility$", RedirectView.as_view(url="attend/accessibility-and-accommodations")),
+    url(r"^accommodations$", RedirectView.as_view(url="attend/accessibility-and-accommodations")),
+    url(r"^a11y$", RedirectView.as_view(url="attend/accessibility-and-accommodations")),
     url(r"^guides$",TemplateView.as_view(template_name="static_pages/attend/guides.html"), name="attend/guides"),
     url(r"^guide$", RedirectView.as_view(url="guides")),
 
@@ -57,6 +59,7 @@ urlpatterns = [
     url(r"^emergency$", RedirectView.as_view(url="safety")),
 
     url(r"^attend/food$", TemplateView.as_view(template_name="static_pages/attend/food.html"), name="attend/food"),
+    url(r"^food-guide$", RedirectView.as_view(url="attend/food")),
     url(r"^food$", RedirectView.as_view(url="attend/food")),
     url(r"^attend/transit$", TemplateView.as_view(template_name="static_pages/attend/transit.html"), name="attend/transit"),
     url(r"^transit$", RedirectView.as_view(url="attend/transit")),
