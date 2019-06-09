@@ -1,6 +1,6 @@
 ## Now accepting talk proposals for North Bay Python 2019
 
-**Monday, July 1, 2019**&mdash;The North Bay Python team is excited to announce [we're now seeking proposals to speak](https://2019.northbaypython.org/program/call-for-proposals) at North Bay Python 2019. We are seeking speakers of all experience levels to contribute to our second annual conference. The deadline to submit a proposal is August 8, 2019.
+**Monday, July 1, 2019**&mdash;The North Bay Python team is excited to announce [we're now seeking proposals to speak](https://2019.northbaypython.org/program/call-for-proposals) at North Bay Python 2019. We are seeking speakers of all experience levels to contribute to our second annual conference. The deadline to submit a proposal is August 9, 2019.
 
 North Bay Python, taking place the weekend of November 2 &amp; 3, 2019, is a single-track event featuring two days of presentations by members of the community. Every presentation in the program, except for the keynotes, will come from people who propose talks. Whether you use Python professionally, as a hobbyist, or are just excited about Python or programming and open source, we'd love to hear from you.
 
@@ -8,4 +8,4 @@ Our program committee, which is responsible for reviewing proposals, is interest
 
 In order to ensure a balanced program, we are proactively doing outreach to new and experienced speakers alike. We are also including a blind review phase in our [selection process](https://2019.northbaypython.org/program/selection-process) in order to combat bias. We are aiming for gender parity, representation of people with disabilities, and ethnic diversity reflective of United States and Bay Area demographics.
 
-Feel free to reach out with any questions, comments, or ideas you have. You can find us on [Twitter](https://twitter.com/northbaypython), [Facebook](https://facebook.com/northbaypython), and [IRC](https://webchat.freenode.net/?channels=%23nbpy), or you can [email us](mailto:program@northbaypython.org). Please, get started today! The [call for proposals](https://2019.northbaypython.org/program/call-for-proposals) closes on August 8, 2019.
+Feel free to reach out with any questions, comments, or ideas you have. You can find us on [Twitter](https://twitter.com/northbaypython), [Facebook](https://facebook.com/northbaypython), and [IRC](https://webchat.freenode.net/?channels=%23nbpy), or you can [email us](mailto:program@northbaypython.org). Please, get started today! The [call for proposals](https://2019.northbaypython.org/program/call-for-proposals) closes on August 9, 2019.
