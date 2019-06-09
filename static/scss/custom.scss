@@ -132,6 +132,12 @@ $homepage-block-min-height: 480px;
   box-shadow: $box-shadow;
   z-index: 3;
 
+  &.shallow {
+    min-height: 0px;
+    padding-top: 12px;
+    padding-bottom: 12px
+  }
+
   .sponsor {
     $sponsor-height: 150px;
     @include make-xs-column(6);
@@ -191,12 +197,12 @@ $homepage-block-min-height: 480px;
 
 
 .homepage-block-content-cloudsep {
-  min-height: ($homepage-block-min-height - 200px);
+  min-height: ($homepage-block-min-height - 20px);
 }
 
 
 .homepage-block-bloop {
-  min-height: 120px;
+  min-height: 20px;
 }
 
 
@@ -475,14 +481,38 @@ span.date {
 }
 
 .logo {
-  float: right !important;
-  width: 80px;
-  height: 80px;
-  margin: 0 1em 2em 2em;
 
-  .circle {
+  &.left {
+    float: left !important;
+  }
+
+  &.right {
+    float: right !important;
+  }
+
+  &.small {
     width: 80px;
     height: 80px;
+    margin: 0 1em 2em 2em;
+
+    .circle {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &.large {
+
+    $sz: $jumbotron-heading-font-size * 2;
+
+    width: $sz;
+    height: $sz;
+
+    .circle {
+      width: $sz;
+      height: $sz;
+    }
+
   }
 }
 
@@ -535,6 +565,7 @@ footer .footer-copy {
 }
 
 .homepage-title {
+  font-size: $font-size-h1;
   font-weight: 600;
 }
 
