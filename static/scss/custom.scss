@@ -133,9 +133,9 @@ $homepage-block-min-height: 480px;
   z-index: 3;
 
   &.shallow {
-    min-height: 0px;
     padding-top: 12px;
-    padding-bottom: 12px
+    padding-bottom: 12px;
+    min-height: 0px;
   }
 
   .sponsor {
@@ -197,12 +197,12 @@ $homepage-block-min-height: 480px;
 
 
 .homepage-block-content-cloudsep {
-  min-height: ($homepage-block-min-height - 20px);
+  min-height: ($homepage-block-min-height - 140px);
 }
 
 
 .homepage-block-bloop {
-  min-height: 20px;
+  min-height: 140px;
 }
 
 
@@ -338,6 +338,10 @@ $homepage-block-min-height: 480px;
 
   &.homepage-footer {
     height: 10%;
+  }
+
+  &.main {
+    height: 80%;
   }
 }
 
