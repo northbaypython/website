@@ -123,6 +123,7 @@ body.auth .panel-heading .panel-title span.pull-right {
 
 
 $homepage-block-min-height: 480px;
+$homepage-block-smaller-min-height: 360px;
 
 .homepage-block {
   margin-top: 0;
@@ -136,6 +137,10 @@ $homepage-block-min-height: 480px;
     padding-top: 12px;
     padding-bottom: 12px;
     min-height: 0px;
+  }
+
+  &.smaller {
+    min-height: $homepage-block-smaller-min-height;
   }
 
   .sponsor {
@@ -197,12 +202,12 @@ $homepage-block-min-height: 480px;
 
 
 .homepage-block-content-cloudsep {
-  min-height: ($homepage-block-min-height - 140px);
+  min-height: ($homepage-block-smaller-min-height - 40px);
 }
 
 
 .homepage-block-bloop {
-  min-height: 140px;
+  min-height: 40px;
 }
 
 
