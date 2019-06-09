@@ -15,14 +15,14 @@ All transactions are performed through a payment gateway facility and use SSL en
 Cancellation Policy
 -------------------
 
-**Cancellations made prior to October 2, 2018**: Incur a cancellation fee of $25 or 15% of the ticket cost, whichever is greater, which will be deducted from any registration fee paid. The balance will be refunded.
+**Cancellations made prior to October 1, 2019**: Incur a cancellation fee of $25 or 15% of the ticket cost, whichever is greater, which will be deducted from any registration fee paid. The balance will be refunded.
 
-**Cancellations made after October 2, 2018**: No refund.
+**Cancellations made after October 1, 2019**: No refund.
 
 Substitutions
 -------------
 
-You may substitute another person, however you must contact us with this person's details. If you wish to substitute after October 2, 2018 please note that we will not be able to provide any personalized items.
+You may substitute another person, however you must contact us with this person's details. If you wish to substitute after October 1, 2018 please note that we will not be able to provide any personalized items.
 
 Privacy Notice
 --------------
