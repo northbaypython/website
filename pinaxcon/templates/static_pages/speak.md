@@ -1,4 +1,4 @@
-### The North Bay Python 2018 CFP is open!
+### Proposal submissions for North Bay Python 2019 are open!
 
 There's information and resources below that you should read, but in case you've already read it and want to dive in now:
 
@@ -14,11 +14,11 @@ Portions of this page were drawn from ideas seen on [DjangoCon EU](https://djang
 
 ## Dates<a name="dates"></a>
 
-+ **July 5**: CFP opens
-+ **August 10**: CFP closes
-+ **Week of September 10**: Acceptance notifications sent
-+ **Week of September 17**: Speaker confirmations due; program finalized and announced
-+ **November 3–4**: Conference happens!
++ **July 1**: Proposal submissions open
++ **August 8**: Proposal submissions close
++ **Week of August 23**: Acceptance notifications sent
++ **Week of September 9**: Speaker confirmations due; program finalized and announced
++ **November 2–3**: Conference happens!
 
 
 ## Speaker Benefits
@@ -37,7 +37,7 @@ North Bay Python is a conference in support of the local programmer community ou
 
 ## Audience
 
-We anticipate more than 300 attendees at our 2018 conference. In 2017, we had 230 attendees from California and beyond, including:
+We anticipate 200-300 attendees at our 2019 conference. In 2017, we had 230 attendees from California and beyond, including:
 
 + 78% from the San Francisco Bay Area, including 25% from Sonoma County
 + 5% from elsewhere in California
