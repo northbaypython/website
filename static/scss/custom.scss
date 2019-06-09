@@ -210,6 +210,38 @@ $homepage-block-smaller-min-height: 360px;
   min-height: 40px;
 }
 
+.homepage-callout {
+  @extend .col-xs-12;
+  @extend .col-sm-6;
+  @extend .col-md-4;
+
+  .callout-image {
+    position: relative;
+    width: 95%;
+    min-height: 240px;
+    margin: 2%;
+    padding: 5%;
+    color: white;
+
+    .txt {
+      z-index: 2;
+      position: relative;
+    }
+
+    .filter {
+      @extend .fill;
+      z-index: -1;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .bg {
+      @extend .fill;
+      z-index: -2;
+
+    }
+  }
+}
+
 
 
 /* ??? */
@@ -574,18 +606,13 @@ footer .footer-copy {
 }
 
 .homepage-title {
-  font-size: $font-size-h1;
   font-weight: 600;
 }
 
 .homepage-subtitle {
-  font-size: $font-size-h3;
   line-height: 1.25;
   font-weight: 300;
 
-  .wrap-break {
-    display: inline-block;
-  }
 }
 
 .navbar-toggle {
@@ -595,4 +622,13 @@ footer .footer-copy {
 
 body.login #content_body .row > div.col-md-9 > p + div.container {
   padding-left: 0px;
+}
+
+.homepage-vertical-space {
+  height: 20px;
+}
+
+
+.wrap-break {
+  display: inline-block;
 }
