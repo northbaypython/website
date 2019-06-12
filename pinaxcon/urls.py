@@ -40,9 +40,9 @@ urlpatterns = [
     url(r"^tickets/buy$", views.buy_ticket, name="buy_ticket"),
     url(r"^attend/business-case$", TemplateView.as_view(template_name="static_pages/attend/business-case.html"), name="attend/business-case"),
     
-    url(r"^financial-aid$", TemplateView.as_view(template_name="static_pages/attend/finaid.html"), name="attend/finaid"),
-    url(r"^attend/finaid$", RedirectView.as_view(url="/financial-aid")),
-    url(r"^attend/financial-aid$", RedirectView.as_view(url="/financial-aid")),
+    url(r"^opportunity-grant$", TemplateView.as_view(template_name="static_pages/attend/finaid.html"), name="opportunity-grant"),
+    url(r"^attend/finaid$", RedirectView.as_view(url="/opportunity-grant")),
+    url(r"^attend/financial-aid$", RedirectView.as_view(url="/opportunity-grant")),
     
     url(r"^attend/travel$", TemplateView.as_view(template_name="static_pages/attend/travel.html"), name="attend/travel"),
     url(r"^attend/hotels$", TemplateView.as_view(template_name="static_pages/attend/hotels.html"), name="attend/hotels"),
