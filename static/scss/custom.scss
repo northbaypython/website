@@ -292,7 +292,7 @@ $homepage-block-smaller-min-height: 360px;
 .homepage-block.dark {
   background: $gray-base;
   color: white;
-  text-shadow: 1px 1px $gray-dark;
+  //text-shadow: 1px 1px $gray-dark;
 
   a:not(.btn) {
     color: lighten($brand-primary, 20%);
