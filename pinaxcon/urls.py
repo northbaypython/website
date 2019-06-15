@@ -39,20 +39,32 @@ urlpatterns = [
     url(r"^tickets$", RedirectView.as_view(url="attend")),
     url(r"^tickets/buy$", views.buy_ticket, name="buy_ticket"),
     url(r"^attend/business-case$", TemplateView.as_view(template_name="static_pages/attend/business-case.html"), name="attend/business-case"),
-    url(r"^attend/finaid$", TemplateView.as_view(template_name="static_pages/attend/finaid.html"), name="attend/finaid"),
+    
+    url(r"^opportunity-grant$", TemplateView.as_view(template_name="static_pages/attend/finaid.html"), name="opportunity-grant"),
+    url(r"^attend/finaid$", RedirectView.as_view(url="/opportunity-grant")),
+    url(r"^attend/financial-aid$", RedirectView.as_view(url="/opportunity-grant")),
+    
     url(r"^attend/travel$", TemplateView.as_view(template_name="static_pages/attend/travel.html"), name="attend/travel"),
     url(r"^attend/hotels$", TemplateView.as_view(template_name="static_pages/attend/hotels.html"), name="attend/hotels"),
     url(r"^attend/tshirt$", TemplateView.as_view(template_name="static_pages/attend/tshirt.html"), name="attend/tshirt"),
     url(r"^attend/accessibility-and-accommodations$",TemplateView.as_view(template_name="static_pages/attend/accommodations.html"), name="attend/accessibility-and-accommodations"),
     url(r"^accessibility$", RedirectView.as_view(url="attend/accessibility-and-accommodations")),
+    url(r"^accommodations$", RedirectView.as_view(url="attend/accessibility-and-accommodations")),
+    url(r"^a11y$", RedirectView.as_view(url="attend/accessibility-and-accommodations")),
     url(r"^guides$",TemplateView.as_view(template_name="static_pages/attend/guides.html"), name="attend/guides"),
     url(r"^guide$", RedirectView.as_view(url="guides")),
+
+    # go
+    url(r"^go/fly$", TemplateView.as_view(template_name="static_pages/attend/fly.html"), name="go/fly"),
+    url(r"^go/stay$", TemplateView.as_view(template_name="static_pages/attend/stay.html"), name="go/stay"),
+    url(r"^go/day-trip$", TemplateView.as_view(template_name="static_pages/attend/day-trip.html"), name="go/day-trip`"),
 
     url(r"^safety$", TemplateView.as_view(template_name="static_pages/safety.html"), name="safety"),
     url(r"^emergencies$", RedirectView.as_view(url="safety")),
     url(r"^emergency$", RedirectView.as_view(url="safety")),
 
     url(r"^attend/food$", TemplateView.as_view(template_name="static_pages/attend/food.html"), name="attend/food"),
+    url(r"^food-guide$", RedirectView.as_view(url="attend/food")),
     url(r"^food$", RedirectView.as_view(url="attend/food")),
     url(r"^attend/transit$", TemplateView.as_view(template_name="static_pages/attend/transit.html"), name="attend/transit"),
     url(r"^transit$", RedirectView.as_view(url="attend/transit")),

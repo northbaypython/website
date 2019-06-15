@@ -86,7 +86,7 @@ First time speakers are welcomed and we want to help! We offer mentorship, feedb
 
 You can [contact the program committee](mailto:program@northbaypython.org) via email or drop by [#nbpy on the Freenode IRC network](https://webchat.freenode.net/?channels=%23nbpy) anytime to connect with a mentor and get help.
 
-Our office hours will be held twice every week **Wednesday at 7pm** and **Friday at 3pm** Pacific Time starting July 11 and finishing August 10. We'll be holding them on IRC, a chat protocol, in the #nbpy channel on the Freenode network. New to IRC? You can use [this web client](https://webchat.freenode.net/?channels=%23nbpy) to connect.
+Our office hours will be held twice every week **Wednesday at 7pm** and **Friday at 3pm** Pacific Time starting July 1 and finishing August 8. We'll be holding them on IRC, a chat protocol, in the #nbpy channel on the Freenode network. New to IRC? You can use [this web client](https://webchat.freenode.net/?channels=%23nbpy) to connect.
 
 We're happy to help with any of the following:
 
