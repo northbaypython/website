@@ -123,6 +123,7 @@ body.auth .panel-heading .panel-title span.pull-right {
 
 
 $homepage-block-min-height: 480px;
+$homepage-block-smaller-min-height: 360px;
 
 .homepage-block {
   margin-top: 0;
@@ -131,6 +132,16 @@ $homepage-block-min-height: 480px;
   position: relative;
   box-shadow: $box-shadow;
   z-index: 3;
+
+  &.shallow {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    min-height: 0px;
+  }
+
+  &.smaller {
+    min-height: $homepage-block-smaller-min-height;
+  }
 
   .sponsor {
     $sponsor-height: 150px;
@@ -188,6 +199,50 @@ $homepage-block-min-height: 480px;
 .homepage-block-content {
   min-height: ($homepage-block-min-height - 80px);
 }
+
+
+.homepage-block-content-cloudsep {
+  min-height: ($homepage-block-smaller-min-height - 40px);
+}
+
+
+.homepage-block-bloop {
+  min-height: 40px;
+}
+
+.homepage-callout {
+  @extend .col-xs-12;
+  @extend .col-sm-6;
+  @extend .col-md-4;
+
+  .callout-image {
+    position: relative;
+    width: 95%;
+    min-height: 240px;
+    margin: 2%;
+    padding: 5%;
+    color: white;
+
+    .txt {
+      z-index: 2;
+      position: relative;
+    }
+
+    .filter {
+      @extend .fill;
+      z-index: -1;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .bg {
+      @extend .fill;
+      z-index: -2;
+
+    }
+  }
+}
+
+
 
 /* ??? */
 .homepage-block-footer {
@@ -304,7 +359,7 @@ $homepage-block-min-height: 480px;
   height: 100%;
 }
 
-.floop {
+.grey-gradient {
 
   background-size: 100%;
   background-position: bottom;
@@ -320,6 +375,10 @@ $homepage-block-min-height: 480px;
 
   &.homepage-footer {
     height: 10%;
+  }
+
+  &.main {
+    height: 80%;
   }
 }
 
@@ -463,20 +522,44 @@ span.date {
 }
 
 .logo {
-  float: right !important;
-  width: 80px;
-  height: 80px;
-  margin: 0 1em 2em 2em;
 
-  .circle {
+  &.left {
+    float: left !important;
+  }
+
+  &.right {
+    float: right !important;
+  }
+
+  &.small {
     width: 80px;
     height: 80px;
+    margin: 0 1em 2em 2em;
+
+    .circle {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &.large {
+
+    $sz: $jumbotron-heading-font-size * 2;
+
+    width: $sz;
+    height: $sz;
+
+    .circle {
+      width: $sz;
+      height: $sz;
+    }
+
   }
 }
 
 footer .footer-copy {
   margin-left: 1em;
-  
+
   p {
     font-size: 16px;
   }
@@ -522,8 +605,14 @@ footer .footer-copy {
   }
 }
 
+.homepage-title {
+  font-weight: 600;
+}
+
 .homepage-subtitle {
-  font-size: $font-size-h3;
+  line-height: 1.25;
+  font-weight: 300;
+
 }
 
 .navbar-toggle {
@@ -533,4 +622,13 @@ footer .footer-copy {
 
 body.login #content_body .row > div.col-md-9 > p + div.container {
   padding-left: 0px;
+}
+
+.homepage-vertical-space {
+  height: 20px;
+}
+
+
+.wrap-break {
+  display: inline-block;
 }

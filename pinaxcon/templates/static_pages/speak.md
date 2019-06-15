@@ -1,4 +1,4 @@
-### The North Bay Python 2018 CFP is open!
+### Proposal submissions for North Bay Python 2019 are open!
 
 There's information and resources below that you should read, but in case you've already read it and want to dive in now:
 
@@ -14,11 +14,11 @@ Portions of this page were drawn from ideas seen on [DjangoCon EU](https://djang
 
 ## Dates<a name="dates"></a>
 
-+ **July 5**: CFP opens
-+ **August 10**: CFP closes
-+ **Week of September 10**: Acceptance notifications sent
-+ **Week of September 17**: Speaker confirmations due; program finalized and announced
-+ **November 3–4**: Conference happens!
++ **July 1**: Proposal submissions open
++ **August 9**: Proposal submissions close
++ **Week of August 23**: Acceptance notifications sent
++ **Week of September 9**: Speaker confirmations due; program finalized and announced
++ **November 2–3**: Conference happens!
 
 
 ## Speaker Benefits
@@ -37,7 +37,7 @@ North Bay Python is a conference in support of the local programmer community ou
 
 ## Audience
 
-We anticipate more than 300 attendees at our 2018 conference. In 2017, we had 230 attendees from California and beyond, including:
+We anticipate 200-300 attendees at our 2019 conference. In 2017, we had 230 attendees from California and beyond, including:
 
 + 78% from the San Francisco Bay Area, including 25% from Sonoma County
 + 5% from elsewhere in California
@@ -86,7 +86,7 @@ First time speakers are welcomed and we want to help! We offer mentorship, feedb
 
 You can [contact the program committee](mailto:program@northbaypython.org) via email or drop by [#nbpy on the Freenode IRC network](https://webchat.freenode.net/?channels=%23nbpy) anytime to connect with a mentor and get help.
 
-Our office hours will be held twice every week **Wednesday at 7pm** and **Friday at 3pm** Pacific Time starting July 11 and finishing August 10. We'll be holding them on IRC, a chat protocol, in the #nbpy channel on the Freenode network. New to IRC? You can use [this web client](https://webchat.freenode.net/?channels=%23nbpy) to connect.
+Our office hours will be held twice every week **Wednesday at 7pm** and **Friday at 3pm** Pacific Time starting July 1 and finishing August 8. We'll be holding them on IRC, a chat protocol, in the #nbpy channel on the Freenode network. New to IRC? You can use [this web client](https://webchat.freenode.net/?channels=%23nbpy) to connect.
 
 We're happy to help with any of the following:
 

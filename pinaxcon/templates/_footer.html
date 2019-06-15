@@ -1,15 +1,18 @@
 {% load staticfiles %}
 {% load sponsorship_tags %}
+<div class="homepage-vertical-space"></div>
+
 <div class="row">
 
-  <div class="logo">
+
+  <div class="logo small right">
     <div class="circle">
       <div class="fill" style="background-image: url('{% static "images/logo.svg" %}');"></div>
     </div>
   </div>
 
   <div class="footer-copy">
-    <p>&copy; 2018 North Bay Python, member project of <a href="https://sfconservancy.org" >Software Freedom Conservancy</a>, a 501(c)(3) charity.</p>
+    <p>&copy; 2019 North Bay Python, member project of <a href="https://sfconservancy.org" >Software Freedom Conservancy</a>, a 501(c)(3) charity.</p>
 
     {% sponsors "platinum" as platinum %}
 

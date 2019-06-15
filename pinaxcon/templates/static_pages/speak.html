@@ -1,0 +1,24 @@
+{% extends "page_with_title_and_lede.html" %}
+
+{% load i18n %}
+{% load markdown_deux_tags %}
+
+{% block head_title %}Speak at North Bay Python{% endblock %}
+
+{% block heading %}Speak at North Bay Python{% endblock %}
+
+{% block body_class %}program{% endblock %}
+
+{% block lede %}
+
+North Bay Python is seeking speakers of all experience levels to contribute to our conference program! We'd love to hear from you whether you use Python professionally, as a hobbyist, or are just excited about Python, programming, and free and open source software.
+
+{% endblock %}
+
+{% block content %}
+  {% markdown %}
+
+{% include "static_pages/speak.md" %}
+
+  {% endmarkdown %}
+{% endblock %}
