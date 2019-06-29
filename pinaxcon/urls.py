@@ -15,7 +15,7 @@ import symposion.views
 
 
 urlpatterns = [
-    url(r"^/$", TemplateView.as_view(template_name="static_pages/homepage.html"), name="home"),
+    url(r"^$", TemplateView.as_view(template_name="static_pages/homepage.html"), name="home"),
 
     # about
     url(r"^about/north-bay-python/$", TemplateView.as_view(template_name="static_pages/about/north_bay_python.html"), name="about/north-bay-python"),
