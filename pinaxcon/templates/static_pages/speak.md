@@ -15,7 +15,7 @@ Portions of this page were drawn from ideas seen on [DjangoCon EU](https://djang
 ## Dates<a name="dates"></a>
 
 + **July 1**: Proposal submissions open
-+ **August 9**: Proposal submissions close
++ **August 16**: Proposal submissions close (DEADLINE UPDATED)
 + **Week of August 23**: Acceptance notifications sent
 + **Week of September 9**: Speaker confirmations due; program finalized and announced
 + **November 2–3**: Conference happens!
