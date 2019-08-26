@@ -1,4 +1,6 @@
-### Proposal submissions for North Bay Python 2019 are open!
+### Proposal submissions for North Bay Python 2019 have closed!
+
+_This page is in place as historical information_
 
 There's information and resources below that you should read, but in case you've already read it and want to dive in now:
 
