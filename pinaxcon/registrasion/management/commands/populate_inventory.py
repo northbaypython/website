@@ -11,7 +11,7 @@ from registrasion.models import conditions as cond
 from symposion import proposals
 
 class Command(BaseCommand):
-    help = 'Populates the inventory with the NBPy2018 inventory model'
+    help = 'Populates the inventory with the NBPy2019 inventory model'
 
     def add_arguments(self, parser):
         pass
@@ -65,6 +65,7 @@ class Command(BaseCommand):
             limit_per_user=1,
             order=1,
         )
+        '''
         self.t_shirt = self.find_or_make(
             inv.Category,
             ("name",),
@@ -77,6 +78,7 @@ class Command(BaseCommand):
             render_type=inv.Category.RENDER_TYPE_ITEM_QUANTITY,
             order=40,
         )
+        '''
         self.extras = self.find_or_make(
             inv.Category,
             ("name",),
@@ -182,6 +184,7 @@ class Command(BaseCommand):
         )
 
         # Shirts
+        '''
         ShirtGroup = namedtuple("ShirtGroup", ("prefix", "sizes"))
         shirt_names = {
             "mens": ShirtGroup(
@@ -215,6 +218,7 @@ class Command(BaseCommand):
                     reservation_duration=hours(1),
                     order=order,
                 )
+        '''
 
     def populate_restrictions(self):
 
@@ -361,7 +365,7 @@ class Command(BaseCommand):
             cond.TimeOrStockLimitDiscount,
             ("description", ),
             description="Early Bird",
-            end_time=datetime(year=2018, month=9, day=30),
+            end_time=datetime(year=2019, month=9, day=20),
             limit=100,  # Across all users
         )
         add_early_birds(early_bird)
@@ -392,7 +396,7 @@ class Command(BaseCommand):
             self.ticket_sponsor,
             self.ticket_speaker,
         ])
-        free_category(ticket_prolike_inclusions, self.t_shirt)
+        # free_category(ticket_prolike_inclusions, self.t_shirt)
 
         # Team & volunteer ticket inclusions
         ticket_staff_inclusions = self.find_or_make(
@@ -405,6 +409,8 @@ class Command(BaseCommand):
             self.ticket_volunteer,
         ])
 
+        '''
+
         # Team & volunteer t-shirts, regardless of ticket type
         staff_t_shirts = self.find_or_make(
             cond.GroupMemberDiscount,
@@ -415,7 +421,9 @@ class Command(BaseCommand):
             self.group_team,
             self.group_volunteers,
         ])
-        free_category(staff_t_shirts, self.t_shirt, quantity=2)
+        free_category(staff_t_shirts, self.t_shirt, quantity=2
+
+        '''
 
     def find_or_make(self, model, search_keys, **k):
         ''' Either makes or finds an object of type _model_, with the given
