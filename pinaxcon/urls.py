@@ -35,7 +35,7 @@ urlpatterns = [
     url(r"^speak/$", TemplateView.as_view(template_name="static_pages/speak.html"), name="speak"),
 
     # attend
-    # url(r"^attend$", TemplateView.as_view(template_name="static_pages/attend/attend.html"), name="attend/attend"),
+    url(r"^attend$", TemplateView.as_view(template_name="static_pages/attend/attend.html"), name="attend/attend"),
     url(r"^tickets/$", RedirectView.as_view(url="/attend")),
     url(r"^tickets/buy/$", views.buy_ticket, name="buy_ticket"),
     url(r"^attend/business-case/$", TemplateView.as_view(template_name="static_pages/attend/business-case.html"), name="attend/business-case"),
