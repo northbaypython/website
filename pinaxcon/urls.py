@@ -27,6 +27,7 @@ urlpatterns = [
 
     # program
     url(r"^program/events/$", TemplateView.as_view(template_name="static_pages/program/events.html"), name="program/events"),
+    url(r"^program/featured-speakers/$", TemplateView.as_view(template_name="static_pages/program/featured_speakers.html"), name="program/featured-speakers"),
     url(r"^events/$", RedirectView.as_view(url="/program/events")),
     url(r"^program/call-for-proposals/$", RedirectView.as_view(url="/speak")),
     url(r"^program/selection-process/$", TemplateView.as_view(template_name="static_pages/program/selection_process.html"), name="program/selection-process"),
