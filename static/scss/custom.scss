@@ -636,3 +636,24 @@ body.login #content_body .row > div.col-md-9 > p + div.container {
 .wrap-break {
   display: inline-block;
 }
+
+
+.speakers_ {
+  text-align: center;
+}
+
+.speaker_ {
+    font-size: x-large;
+    margin-bottom: 0.5em;
+
+    &.headline {
+      font-size: xx-large;
+    }
+}
+
+
+.speaker-description {
+  font-size: smaller;
+  display: block;
+  font-variant: small-caps;
+}
