@@ -77,8 +77,8 @@ def patch_conference_schedule():
 
     def update_keynote(request, slot_data):
         keynotes = {
-            "Brandon Rhodes": (User.objects.get(username="brandon").email, "brandon_rhodes"),
-            "Carina C. Zona": (User.objects.get(username="cczona").email, "cczona"),
+            # "Brandon Rhodes": (User.objects.get(username="brandon").email, "brandon_rhodes"),
+            # "Carina C. Zona": (User.objects.get(username="cczona").email, "cczona"),
         }
         for speaker, values in keynotes.items():
             print speaker
